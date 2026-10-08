@@ -1,0 +1,47 @@
+# 깃에 올리면 사이트를 만들어 Cloudflare Pages 로 배포합니다.
+#
+# 처음 한 번만 준비할 것 (GitHub 저장소 > Settings > Secrets and variables > Actions):
+#   CLOUDFLARE_API_TOKEN   Cloudflare 에서 만든 토큰 (권한: Cloudflare Pages - Edit)
+#   CLOUDFLARE_ACCOUNT_ID  Cloudflare 대시보드 주소줄의 긴 문자열
+#
+# 둘을 넣고 나면 이 파일이 알아서 빌드하고 올립니다.
+
+name: 사이트 배포
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # 수동으로도 돌릴 수 있게
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 사이트 만들기
+        run: node build.mjs
+
+      - name: 만들어진 쪽수 확인
+        run: |
+          echo "HTML 쪽수: $(find dist -name '*.html' | wc -l)"
+          test -f dist/index.html || { echo "메인 페이지가 없습니다"; exit 1; }
+          test -f dist/sitemap.xml || { echo "사이트맵이 없습니다"; exit 1; }
+
+      - name: Cloudflare Pages 로 올리기
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=icessak-site --branch=main
