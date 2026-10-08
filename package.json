@@ -1,0 +1,9 @@
+{
+  "name": "icessak-site",
+  "private": true,
+  "description": "얼음싹싹 — 제빙기 분해 청소 홈페이지",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "python3 tools/page_similarity.py dist --list .build-dong.txt --label 동네"
+  }
+}

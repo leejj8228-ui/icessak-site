@@ -1,0 +1,30 @@
+{
+  "_설명": "작업 사례. 동(dong)과 상권 메모가 채워져야 그 동 페이지가 열립니다(SEO_PLAN 3-2).",
+  "_원본": "v3/data/cases.json 의 판독 결과를 지역 연결용으로 옮긴 것. 사진은 /images/cases/ 에 있음.",
+  "_채울것": "dong(행정동 슬러그) · date · brand · placeType · consent. 이게 비면 지역 페이지에 안 나옵니다.",
+  "stores": [
+    { "id": "store-1", "label": "매장 1", "batches": [2, 3], "dong": null, "brand": null, "date": null, "placeType": null, "consent": null },
+    { "id": "store-2", "label": "매장 2", "batches": [4, 5, 7], "dong": null, "brand": null, "date": null, "placeType": null, "consent": null },
+    { "id": "store-3", "label": "매장 3", "batches": [6], "dong": null, "brand": null, "date": null, "placeType": null, "consent": null }
+  ],
+  "cases": [
+    { "id": "store-1-parts", "store": "store-1", "dong": null, "part": "분배관·호스",
+      "before": "/images/cases/b-parts-before.jpg", "after": "/images/cases/b-parts-after.jpg",
+      "source": [12, 19], "date": null, "brand": null, "placeType": null, "comment": null, "consent": null },
+    { "id": "store-1-pipe", "store": "store-1", "dong": null, "part": "분배관·호스(확대)",
+      "before": "/images/cases/b-pipe-before.jpg", "after": "/images/cases/b-pipe-after.jpg",
+      "source": [13, 18], "date": null, "brand": null, "placeType": null, "comment": null, "consent": null },
+    { "id": "store-2-pump", "store": "store-2", "dong": null, "part": "순환 펌프",
+      "before": "/images/cases/c-pump-before.jpg", "after": "/images/cases/c-pump-after.jpg",
+      "source": [20, 32], "date": null, "brand": null, "placeType": null, "comment": null, "consent": null },
+    { "id": "store-3-pipe", "store": "store-3", "dong": null, "part": "물 분배관",
+      "before": "/images/cases/d-pipe-before.jpg", "after": "/images/cases/d-pipe-after.jpg",
+      "source": [37, 41], "date": null, "brand": null, "placeType": null, "comment": null, "consent": null },
+    { "id": "store-3-tray", "store": "store-3", "dong": null, "part": "물받이 트레이",
+      "before": "/images/cases/d-tray-before.jpg", "after": "/images/cases/d-tray-after.jpg",
+      "source": [36, 40], "date": null, "brand": null, "placeType": null, "comment": null, "consent": null },
+    { "id": "store-3-pump", "store": "store-3", "dong": null, "part": "순환 펌프",
+      "before": "/images/cases/d-pump-before.jpg", "after": "/images/cases/d-pump-after.jpg",
+      "source": [39, 43], "date": null, "brand": null, "placeType": null, "comment": null, "consent": null }
+  ]
+}

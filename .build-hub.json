@@ -1,0 +1,122 @@
+{
+ "area/index.html": {
+  "maxSim": 0.2,
+  "unique": 129,
+  "pass": true
+ },
+ "area/incheon/index.html": {
+  "maxSim": 0.333,
+  "unique": 66,
+  "pass": true
+ },
+ "area/incheon/jemulpo-gu/index.html": {
+  "maxSim": 0.516,
+  "unique": 86,
+  "pass": false
+ },
+ "area/incheon/yeongjong-gu/index.html": {
+  "maxSim": 0.594,
+  "unique": 35,
+  "pass": false
+ },
+ "area/incheon/michuhol-gu/index.html": {
+  "maxSim": 0.49,
+  "unique": 102,
+  "pass": false
+ },
+ "area/incheon/yeonsu-gu/index.html": {
+  "maxSim": 0.528,
+  "unique": 69,
+  "pass": false
+ },
+ "area/incheon/namdong-gu/index.html": {
+  "maxSim": 0.488,
+  "unique": 95,
+  "pass": false
+ },
+ "area/incheon/bupyeong-gu/index.html": {
+  "maxSim": 0.496,
+  "unique": 94,
+  "pass": false
+ },
+ "area/incheon/gyeyang-gu/index.html": {
+  "maxSim": 0.556,
+  "unique": 62,
+  "pass": false
+ },
+ "area/incheon/seohae-gu/index.html": {
+  "maxSim": 0.553,
+  "unique": 77,
+  "pass": false
+ },
+ "area/incheon/geomdan-gu/index.html": {
+  "maxSim": 0.592,
+  "unique": 52,
+  "pass": false
+ },
+ "area/incheon/ganghwa-gun/index.html": {
+  "maxSim": 0.537,
+  "unique": 82,
+  "pass": false
+ },
+ "area/incheon/ongjin-gun/index.html": {
+  "maxSim": 0.594,
+  "unique": 41,
+  "pass": false
+ },
+ "area/bucheon/index.html": {
+  "maxSim": 0.422,
+  "unique": 10,
+  "pass": false
+ },
+ "area/bucheon/wonmi-gu/index.html": {
+  "maxSim": 0.545,
+  "unique": 79,
+  "pass": false
+ },
+ "area/bucheon/sosa-gu/index.html": {
+  "maxSim": 0.565,
+  "unique": 49,
+  "pass": false
+ },
+ "area/bucheon/ojeong-gu/index.html": {
+  "maxSim": 0.594,
+  "unique": 37,
+  "pass": false
+ },
+ "area/gimpo/index.html": {
+  "maxSim": 0.422,
+  "unique": 53,
+  "pass": false
+ },
+ "about/index.html": {
+  "maxSim": 0.15,
+  "unique": 267,
+  "pass": true
+ },
+ "why/index.html": {
+  "maxSim": 0.094,
+  "unique": 816,
+  "pass": true
+ },
+ "price/index.html": {
+  "maxSim": 0.144,
+  "unique": 210,
+  "pass": true
+ },
+ "process/index.html": {
+  "maxSim": 0.167,
+  "unique": 71,
+  "pass": true
+ },
+ "faq/index.html": {
+  "maxSim": 0.151,
+  "unique": 140,
+  "pass": true
+ },
+ "privacy/index.html": {
+  "maxSim": 0.139,
+  "unique": 140,
+  "pass": true
+ }
+}

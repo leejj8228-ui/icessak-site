@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>얼음싹싹 로고 가이드</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <style>
+    :root {
+      --blue: #0b5ad9; --ink: #111a23; --text-2: #4b5967; --line: #dbe3ea;
+      --ice-1: #f4f9fd; --ice-2: #e2effa; --white: #fff;
+      --font: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.45; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, p { margin: 0; }
+    p { max-width: 36em; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 4.5vw, 48px); }
+    section { padding: clamp(64px, 9vw, 112px) 0; border-top: 1px solid var(--line); }
+    .kicker { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 12px; }
+    h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .muted { color: var(--text-2); }
+    .grid { display: grid; gap: 16px; }
+    .tile { min-width: 0; border: 1px solid var(--line); padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .tile__art { display: flex; align-items: center; justify-content: center; min-height: 160px; }
+    .tile__cap { font-size: 15px; color: var(--text-2); }
+    .tile__cap b { color: var(--ink); }
+
+    /* 표지 */
+    .cover { border: 0; padding: clamp(72px, 11vw, 140px) 0; background: linear-gradient(180deg, #fff, var(--ice-1) 60%, var(--ice-2)); text-align: center; }
+    .cover img { width: min(560px, 86vw); height: auto; }
+    .cover p { margin: 32px auto 0; color: var(--text-2); }
+
+    /* 변형 */
+    .variants { grid-template-columns: 1fr 1fr; }
+    .on-blue { background: var(--blue); }
+    .on-blue .tile__cap, .on-blue .tile__cap b { color: #fff; }
+    .on-ice { background: var(--ice-1); }
+
+    /* 여백·크기 */
+    .spec { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; }
+    .clear { position: relative; display: inline-block; padding: 28px; outline: 1px dashed #9fb0bf; background: repeating-linear-gradient(45deg, #f4f9fd 0 6px, #fff 6px 12px); }
+    .clear img { display: block; height: 72px; background: #fff; }
+    .sizes { display: flex; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+    .sizes figure { margin: 0; text-align: center; font-size: 13px; color: var(--text-2); }
+    .sizes img { display: block; margin: 0 auto 8px; }
+
+    /* 색 */
+    .colors { grid-template-columns: repeat(4, 1fr); }
+    .chip { border: 1px solid var(--line); }
+    .chip__sw { height: 120px; }
+    .chip__txt { padding: 14px 16px; font-size: 14px; }
+    .chip__txt b { display: block; font-size: 15px; }
+
+    /* 사용 예시 */
+    .uses { grid-template-columns: 1fr 1fr; }
+    .mock { display: flex; align-items: center; justify-content: center; min-height: 260px; background: var(--ice-1); padding: 24px; }
+    /* 웹 헤더 */
+    .m-header { width: 100%; background: #fff; border: 1px solid var(--line); display: flex; align-items: center; gap: 16px; padding: 14px 18px; }
+    .m-header img { height: 30px; }
+    .m-header nav { margin-left: auto; display: flex; gap: 14px; font-size: 13px; color: var(--text-2); }
+    .m-header nav i { font-style: normal; }
+    .m-header .cta { background: var(--blue); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 12px; }
+    /* 카카오 프로필 */
+    .m-kakao { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); padding: 18px 22px; width: 100%; max-width: 360px; }
+    .m-kakao__pic { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex: none; }
+    .m-kakao__pic img { width: 100%; height: 100%; display: block; }
+    .m-kakao b { display: block; font-size: 17px; }
+    .m-kakao small { font-size: 13px; color: var(--text-2); }
+    /* 명함 */
+    .m-cards { display: grid; gap: 14px; width: 100%; max-width: 420px; }
+    .m-card { aspect-ratio: 9 / 5; background: #fff; border: 1px solid var(--line); padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 40px -30px rgba(11, 90, 217, .35); }
+    .m-card--front { align-items: center; justify-content: center; background: var(--blue); border-color: var(--blue); }
+    .m-card--front img { height: 40px; }
+    .m-card img.s { height: 26px; align-self: flex-start; }
+    .m-card dl { margin: 0; font-size: 13px; display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; }
+    .m-card dt { color: var(--text-2); }
+    .m-card dd { margin: 0; font-weight: 700; }
+    .m-card dd.tel { font-size: 18px; letter-spacing: -0.01em; }
+    /* 청소 완료 스티커 */
+    .m-sticker { width: 240px; background: #fff; border: 2px solid var(--blue); border-radius: 18px; overflow: hidden; text-align: center; }
+    .m-sticker__top { background: var(--blue); padding: 14px; }
+    .m-sticker__top img { height: 28px; }
+    .m-sticker__body { padding: 16px 18px 18px; }
+    .m-sticker__done { font-size: 24px; font-weight: 900; color: var(--blue); letter-spacing: -0.03em; }
+    .m-sticker__row { display: flex; justify-content: space-between; font-size: 13px; border-top: 1px solid var(--line); padding-top: 8px; margin-top: 8px; }
+    .m-sticker__row b { font-weight: 700; }
+    .m-sticker__tel { margin-top: 10px; font-size: 12px; color: var(--text-2); }
+
+    /* 다른 안 */
+    .alts { grid-template-columns: repeat(3, 1fr); }
+    .alts--4 { grid-template-columns: repeat(4, 1fr); }
+    .alt-mark { width: 96px; height: 96px; }
+
+    .note { font-size: 14px; color: var(--text-2); margin-top: 20px; }
+
+    @media (max-width: 760px) {
+      .variants, .spec, .uses, .alts, .alts--4 { grid-template-columns: minmax(0, 1fr); }
+      .clear { padding: 16px; }
+      .clear img { height: auto; width: 100%; max-width: 240px; }
+      .tile__art img { max-width: 100%; height: auto; }
+      .mock { padding: 16px; }
+      .colors { grid-template-columns: 1fr 1fr; }
+      .tile { padding: 24px; }
+      .m-header nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <img src="logo.svg" alt="얼음싹싹">
+    <p>모서리를 깎은 각얼음에 남은 두 줄의 빛은 <b>싹·싹</b> 닦아 낸 자국이고, 반짝임은 청소가 끝난 얼음입니다.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">로고 종류</p>
+    <h2>바탕에 맞춰 네 가지를 씁니다</h2>
+    <div class="grid variants">
+      <div class="tile"><div class="tile__art"><img src="logo.svg" alt="" height="64"></div><p class="tile__cap"><b>기본형</b> · 흰 바탕, 밝은 바탕. 웹사이트·문서 기본.</p></div>
+      <div class="tile on-blue"><div class="tile__art"><img src="logo-white.svg" alt="" height="64"></div><p class="tile__cap"><b>흰색형</b> · 파란 바탕, 사진 위, 차량·작업복.</p></div>
+      <div class="tile on-ice"><div class="tile__art"><img src="logo-stacked.svg" alt="" height="150"></div><p class="tile__cap"><b>세로형</b> · 정사각형 자리, 스티커, 전단 하단.</p></div>
+      <div class="tile"><div class="tile__art"><img src="logo-mono.svg" alt="" height="64"></div><p class="tile__cap"><b>단색형</b> · 흑백 인쇄, 도장, 영수증.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">여백과 크기</p>
+    <h2>둘레를 비우고, 너무 작게 쓰지 않습니다</h2>
+    <div class="spec">
+      <div class="tile"><div class="tile__art"><span class="clear"><img src="logo.svg" alt=""></span></div><p class="tile__cap">로고 둘레에는 <b>심볼 높이의 절반 이상</b>을 비웁니다(빗금 영역).</p></div>
+      <div class="tile">
+        <div class="tile__art sizes">
+          <figure><img src="logo-mark.svg" alt="" width="64" height="64">64px</figure>
+          <figure><img src="logo-mark.svg" alt="" width="32" height="32">32px</figure>
+          <figure><img src="logo-mark.svg" alt="" width="16" height="16">16px</figure>
+        </div>
+        <p class="tile__cap">가로형은 <b>높이 24px 이상</b>. 그보다 작으면 <b>심볼만</b> 씁니다(파비콘 16px까지).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">색</p>
+    <h2>파랑 하나에, 먹색과 흰색</h2>
+    <div class="grid colors">
+      <div class="chip"><div class="chip__sw" style="background:#0b5ad9"></div><p class="chip__txt"><b>싹싹 블루</b>#0B5AD9 · 로고, 버튼</p></div>
+      <div class="chip"><div class="chip__sw" style="background:#111a23"></div><p class="chip__txt"><b>먹색</b>#111A23 · "얼음", 글자</p></div>
+      <div class="chip"><div class="chip__sw" style="background:#ffffff"></div><p class="chip__txt"><b>흰색</b>#FFFFFF · 바탕, 반전</p></div>
+      <div class="chip"><div class="chip__sw" style="background:#e2effa"></div><p class="chip__txt"><b>아이스</b>#E2EFFA · 넓은 바탕</p></div>
+    </div>
+    <p class="note">글꼴: 로고 글자는 Pretendard Black을 윤곽선으로 바꿔 넣어, 글꼴이 없는 기기에서도 똑같이 보입니다(SIL OFL 1.1, 상업 사용 가능).</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">사용 예시</p>
+    <h2>실제로 이렇게 보입니다</h2>
+    <div class="grid uses">
+      <div class="tile">
+        <div class="mock"><div class="m-header"><img src="logo.svg" alt=""><nav><i>서비스</i><i>가격</i></nav><span class="cta">상담 신청</span></div></div>
+        <p class="tile__cap"><b>웹사이트 헤더</b> · 높이 30~36px의 기본형</p>
+      </div>
+      <div class="tile">
+        <div class="mock"><div class="m-kakao"><div class="m-kakao__pic"><img src="logo-mark.svg" alt=""></div><div><b>얼음싹싹</b><small>제빙기 분해 청소 · 사진 한 장 견적</small></div></div></div>
+        <p class="tile__cap"><b>카카오톡 채널 프로필</b> · 심볼만, 원형으로 잘려도 안쪽 그림이 남습니다</p>
+      </div>
+      <div class="tile">
+        <div class="mock">
+          <div class="m-cards">
+            <div class="m-card m-card--front"><img src="logo-white.svg" alt=""></div>
+            <div class="m-card">
+              <img class="s" src="logo.svg" alt="">
+              <dl>
+                <dt>업무</dt><dd>제빙기 분해 청소 · 정기 관리</dd>
+                <dt>담당자</dt><dd class="tel">010-8859-7950</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <p class="tile__cap"><b>명함</b> · 앞면 파랑+흰색형, 뒷면 기본형+담당자 번호</p>
+      </div>
+      <div class="tile">
+        <div class="mock">
+          <div class="m-sticker">
+            <div class="m-sticker__top"><img src="logo-white.svg" alt=""></div>
+            <div class="m-sticker__body">
+              <p class="m-sticker__done">청소 완료</p>
+              <div class="m-sticker__row"><span>작업일</span><b>2026. 10. 07</b></div>
+              <div class="m-sticker__row"><span>다음 권장일</span><b>2027. 01. 07</b></div>
+              <p class="m-sticker__tel">문의 010-8859-7950</p>
+            </div>
+          </div>
+        </div>
+        <p class="tile__cap"><b>청소 완료 스티커</b> · 제빙기 앞면에 붙여 다음 청소 날짜를 알립니다</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">참고: 검토했던 다른 심볼</p>
+    <h2>모서리를 깎은 팔각형으로 정했습니다</h2>
+    <div class="grid alts alts--4">
+      <div class="tile"><div class="tile__art"><img class="alt-mark" src="logo-mark.svg" alt=""></div><p class="tile__cap"><b>확정 · 모서리 깎은 각얼음</b> 깎인 변이 두 줄과 같은 45°라 정돈되고, 16px에서도 형태가 남음.</p></div>
+      <div class="tile"><div class="tile__art"><svg class="alt-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M64.00 41.25 Q64.00 45.25 61.17 48.08 L48.08 61.17 Q45.25 64.00 41.25 64.00 L22.75 64.00 Q18.75 64.00 15.92 61.17 L2.83 48.08 Q0.00 45.25 -0.00 41.25 L-0.00 22.75 Q-0.00 18.75 2.83 15.92 L15.92 2.83 Q18.75 -0.00 22.75 -0.00 L41.25 0.00 Q45.25 0.00 48.08 2.83 L61.17 15.92 Q64.00 18.75 64.00 22.75 Z" fill="#0b5ad9"/><g stroke="#ffffff" stroke-width="6" stroke-linecap="round"><path d="M14 29 L29 14"/><path d="M14 41.5 L41.5 14"/></g><path d="M44.5 34.9 C45.532 42.468 45.532 42.468 53.1 43.5 C45.532 44.532 45.532 44.532 44.5 52.1 C43.468 44.532 43.468 44.532 35.9 43.5 C43.468 42.468 43.468 42.468 44.5 34.9 Z" fill="#ffffff"/></svg></div><p class="tile__cap"><b>정팔각형</b> 반듯하지만 교통 표지판(정지)처럼 읽힐 수 있음.</p></div>
+      <div class="tile"><div class="tile__art"><svg class="alt-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M25.94 3.00 Q32.00 -0.50 38.06 3.00 L54.08 12.25 Q60.15 15.75 60.15 22.75 L60.15 41.25 Q60.15 48.25 54.08 51.75 L38.06 61.00 Q32.00 64.50 25.94 61.00 L9.92 51.75 Q3.85 48.25 3.85 41.25 L3.85 22.75 Q3.85 15.75 9.92 12.25 Z" fill="#0b5ad9"/><g stroke="#ffffff" stroke-width="5.6" stroke-linecap="round"><path d="M15.5 31 L27 19.5"/><path d="M15.5 41.5 L37.5 19.5"/></g><path d="M42.5 34 C43.46 41.04 43.46 41.04 50.5 42 C43.46 42.96 43.46 42.96 42.5 50 C41.54 42.96 41.54 42.96 34.5 42 C41.54 41.04 41.54 41.04 42.5 34 Z" fill="#ffffff"/></svg></div><p class="tile__cap"><b>육각형</b> 얼음 결정 느낌. 같은 높이에서 면적이 작아 글자 옆에서 약해 보임.</p></div>
+      <div class="tile"><div class="tile__art"><svg class="alt-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0b5ad9"/><g stroke="#ffffff" stroke-width="6.2" stroke-linecap="round"><path d="M15 29 L29 15"/><path d="M15 41 L41 15"/></g><path d="M45 34 C46.08 41.92 46.08 41.92 54 43 C46.08 44.08 46.08 44.08 45 52 C43.92 44.08 43.92 44.08 36 43 C43.92 41.92 43.92 41.92 45 34 Z" fill="#ffffff"/></svg></div><p class="tile__cap"><b>첫 안 · 둥근 사각형</b> 또렷하지만 흔한 앱 아이콘처럼 보임.</p></div>
+    </div>
+    <p class="note">같은 크기·같은 쓰임으로 비교한 이미지: preview/shape-compare.png</p>
+  </div>
+</section>
+
+<footer style="padding:40px 0 56px;border-top:1px solid var(--line)">
+  <div class="wrap" style="font-size:14px;color:var(--text-2)">얼음싹싹 로고 가이드 · 확정 2026-10-07 (모서리 깎은 팔각형). PNG는 png/ 폴더. 파일: logo.svg, logo-white.svg, logo-mono.svg, logo-stacked.svg, logo-mark.svg, favicon.svg</div>
+</footer>
+
+</body>
+</html>

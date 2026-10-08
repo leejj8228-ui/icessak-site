@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 260" role="img" aria-label="언더카운터형 제빙기 그림">
+<!-- 언더카운터(일체형) 제빙기 일러스트: 특정 제조사 제품이 아닌 일반형 -->
+<defs>
+<linearGradient id="st" x1="0" x2="1"><stop offset="0" stop-color="#e9eef2"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#d7dfe6"/></linearGradient>
+<linearGradient id="dk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe3f6"/><stop offset="1" stop-color="#9fc3e6"/></linearGradient>
+</defs>
+<ellipse cx="120" cy="248" rx="92" ry="7" fill="#111a23" opacity=".08"/>
+<rect x="34" y="20" width="172" height="216" rx="6" fill="url(#st)" stroke="#9fb0bf" stroke-width="2"/>
+<!-- 상단 기계부 통풍구 -->
+<g stroke="#9fb0bf" stroke-width="3" stroke-linecap="round"><path d="M56 42h52M56 52h52M56 62h52"/></g>
+<rect x="140" y="38" width="46" height="26" rx="3" fill="#ffffff" stroke="#9fb0bf" stroke-width="2"/>
+<circle cx="152" cy="51" r="4" fill="#0b5ad9"/><rect x="161" y="48" width="18" height="6" rx="2" fill="#c9d6e1"/>
+<path d="M34 80h172" stroke="#9fb0bf" stroke-width="2"/>
+<!-- 저빙고 문 + 얼음 창 -->
+<rect x="52" y="96" width="136" height="104" rx="5" fill="#f4f8fb" stroke="#9fb0bf" stroke-width="2"/>
+<rect x="66" y="110" width="108" height="56" rx="4" fill="url(#dk)" opacity=".9"/>
+<g fill="#ffffff" stroke="#7fa9cf" stroke-width="1.5" opacity=".95">
+<rect x="74" y="140" width="18" height="18" rx="3"/><rect x="94" y="138" width="18" height="18" rx="3"/><rect x="114" y="141" width="18" height="18" rx="3"/><rect x="134" y="139" width="18" height="18" rx="3"/><rect x="152" y="142" width="16" height="16" rx="3"/>
+<rect x="84" y="123" width="18" height="18" rx="3"/><rect x="106" y="121" width="18" height="18" rx="3"/><rect x="128" y="124" width="18" height="18" rx="3"/>
+</g>
+<path d="M70 114l20-2" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<rect x="92" y="180" width="56" height="8" rx="4" fill="#0b5ad9"/>
+<!-- 다리 -->
+<rect x="50" y="236" width="14" height="8" rx="2" fill="#9fb0bf"/><rect x="176" y="236" width="14" height="8" rx="2" fill="#9fb0bf"/>
+</svg>
