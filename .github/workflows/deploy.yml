@@ -8,10 +8,10 @@
 
 name: 사이트 배포
 
+# 지금은 Cloudflare 대시보드에서 저장소를 직접 연결해 쓰고 있습니다.
+# 이 방식(토큰으로 배포)은 쓰지 않으므로 손으로 돌릴 때만 동작하게 두었습니다.
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:        # 수동으로도 돌릴 수 있게
+  workflow_dispatch:
 
 jobs:
   deploy:
