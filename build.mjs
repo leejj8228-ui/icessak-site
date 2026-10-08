@@ -80,23 +80,21 @@ const shuffled = (arr, rnd) => {
   for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a;
 };
-/* 태그마다 골고루 섞어 n개 뽑는다 — 이웃한 동끼리 같은 묶음이 되지 않게 */
-function pickQA(slug, n) {
-  const rnd = seedOf(slug);
-  const byTag = {};
-  for (const x of QA) (byTag[x.tag] ??= []).push(x);
-  const tags = shuffled(Object.keys(byTag), rnd);
-  const out = [];
-  for (let round = 0; out.length < n; round++) {
-    for (const t of tags) {
-      const pool = byTag[t];
-      if (pool[round]) { out.push(shuffled(pool, seedOf(slug + t))[round]); }
-      if (out.length >= n) break;
-    }
-    if (round > 6) break;
+/* 질문답 n개 고르기.
+ * 쪽마다 고르게 흩어지도록 전체를 섞어 앞에서 가져오되, 한 갈래에서 2개를 넘지 않게 해
+ * 주제가 한쪽으로 쏠리지 않게 한다. */
+function pickQA(key, n) {
+  const rnd = seedOf(key + ':qa');
+  const out = [], used = {};
+  for (const x of shuffled(QA, rnd)) {
+    if ((used[x.tag] ?? 0) >= 2) continue;
+    used[x.tag] = (used[x.tag] ?? 0) + 1;
+    out.push(x);
+    if (out.length >= n) break;
   }
-  return shuffled(out, rnd);
+  return out;
 }
+
 const TITLE_TAIL = ['분해 세척', '출장 청소', '수조·배관 세척', '방문 분해 청소', '얼음 위생 관리'];
 const LEAD = [
   (n) => `${n} 어디든 찾아갑니다. 분해 세척 <em>50kg 이하 10만원</em>부터, 약 2시간.`,
@@ -419,7 +417,7 @@ function buildDong({ city: c, gu: g, dong: d, grade: gr }) {
 
   const key = url;                                   // 주소 전체를 씨앗으로 (동 이름이 겹쳐도 달라지게)
   const rnd = seedOf(key + ':layout');
-  const qa = pickQA(key, 5 + Math.floor(rnd() * 3));          // 5~7개
+  const qa = pickQA(key, 8 + Math.floor(rnd() * 4));         // 8~11개
   const lead = LEAD[Math.floor(seedOf(key)() * LEAD.length)];
 
   const secQA = qa.length ? `<section class="lsec"><div class="wrap">

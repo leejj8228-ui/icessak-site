@@ -34,7 +34,7 @@ class MainText(HTMLParser):
         if tag in VOID:
             return
         start_skip = self.skip_from is None and (
-            dict(attrs).get('data-shared') is not None or tag in SKIP_TAGS)
+            any(k == 'data-shared' for k, _ in attrs) or tag in SKIP_TAGS)
         self.stack.append(tag)
         if start_skip:
             self.skip_from = len(self.stack)
