@@ -135,11 +135,22 @@ def main():
         for p_ in pages:
             others = set().union(*(sh[q] for q in pages if q != p_)) if len(pages) > 1 else set()
             uniq_of[str(p_.relative_to(root))] = len(sh[p_] - others)
+        # 두 지표를 나눠 둔다.
+        #   passSim    : 다른 페이지와 너무 비슷한가 (중복 판정 위험) -> 색인을 막는 기준
+        #   passUnique : 이 페이지에만 있는 내용이 있는가 (얇은 페이지) -> 보고용
+        # 공용 질문답 뱅크로 만든 페이지는 같은 답이 여러 장에 쓰여 passUnique 가
+        # 구조적으로 낮다. 이건 사장님이 직접 쓴 글이 들어가야 올라간다.
         out = {k: {'maxSim': round(worst[k], 3), 'unique': uniq_of[k],
-                   'pass': worst[k] <= a.max_sim and uniq_of[k] >= a.min_unique}
+                   'passSim': worst[k] <= a.max_sim,
+                   'passUnique': uniq_of[k] >= a.min_unique,
+                   'pass': worst[k] <= a.max_sim}
                for k in worst}
         pathlib.Path(a.json).write_text(_json.dumps(out, ensure_ascii=False, indent=1), encoding='utf-8')
-        print(f'  판정 저장: {a.json}  (통과 {sum(1 for v in out.values() if v["pass"])}/{len(out)})')
+        ok = sum(1 for v in out.values() if v['pass'])
+        thin = sum(1 for v in out.values() if not v['passUnique'])
+        print(f'  판정: 유사도 통과 {ok}/{len(out)}장 · 내용이 얇은 쪽 {thin}장')
+        print(f'    (얇음 = 이 페이지에만 있는 내용이 {a.min_unique}조각 미만. '
+              '공용 질문답만 들어간 페이지는 원래 낮고, 직접 쓰신 글이 들어가면 올라갑니다.)')
 
     print(f'  위반 {bad}건' + ('  (참고용, 배포는 막지 않음)' if a.warn and bad else ''))
     return 1 if (bad and not a.warn) else 0
