@@ -100,3 +100,11 @@
   .cta-band .btn--lg { min-height: 44px; padding: 0 18px; }
   .foot { padding: 24px 0 32px; }
 }
+
+/* 메인 페이지의 서비스 지역 섹션 */
+.area-cities { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.area-city h3 { font-size: 1.375rem; font-weight: 900; margin-bottom: 12px; }
+.area-city h3 a { text-decoration: none; }
+.area-city .chips .chip { font-size: 14px; padding: 6px 10px; }
+.center { text-align: center; }
+@media (max-width: 900px) { .area-cities { grid-template-columns: 1fr; gap: 20px; } }

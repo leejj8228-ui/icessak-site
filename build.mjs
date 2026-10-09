@@ -127,6 +127,14 @@ ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ''}<link rel="c
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${esc(abs)}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="${esc(SITE.name)}">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="${SITE.origin}/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(SITE.name)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${SITE.origin}/assets/og.png">
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join('\n')}
 </head>
 <body>
@@ -264,7 +272,7 @@ function buildArea() {
 <section class="lhero"><div class="wrap">
   <p class="kicker">서비스 지역</p>
   <h1>인천 · 김포 · 부천</h1>
-  <p class="answer">인천·김포·부천, <em>육로로 갈 수 있는 곳이면 어디든</em> 찾아갑니다.</p>
+  <p class="answer">인천·김포·부천, <em>어느 동네든</em> 찾아갑니다.</p>
   <div class="stats">
     <div><b>${REGIONS.cities.length}</b>개 시</div>
     <div><b>${allGus.length}</b>개 구·군</div>
@@ -289,8 +297,7 @@ function buildArea() {
 <section class="lsec"><div class="wrap">
   <h2>동네마다 찾아갑니다</h2>
   <p class="memo">위에서 시 → 구 → 동네 순으로 들어가면 <b>동네별 안내</b>가 나옵니다.
-  목록에 없는 동네도 <a href="${TEL_HREF}">전화</a> 주시면 그대로 출장 갑니다.
-  배로만 들어가는 섬 지역만 어렵습니다.</p>
+  목록에 없는 동네도 <a href="${TEL_HREF}">전화</a> 한 통이면 바로 일정을 잡아 드립니다.</p>
 </div></section>
 ${ctaBand('우리 지역도 오시나요? 전화 한 통이면 됩니다')}`;
   page('/area/', layout({
@@ -359,7 +366,7 @@ function buildGu(c, g) {
 </div></section>
 <section class="lsec"><div class="wrap">
   <h2>${esc(g.name)}의 동</h2>
-  <p class="legend"><span>진한 칸 = 페이지가 열린 동</span><span>흐린 칸 = 아직 작업 기록이 없는 동 (출장은 갑니다)</span></p>
+  
   <div class="dong-grid">${(g.groups ?? []).map((d) => dongCell(c, g, d)).join('')}</div>
   <p class="muted">행정동으로는 ${g.dongs.length}개 동입니다: ${g.dongs.map((d) => d.name).join(' · ')}</p>
   ${g.note ? `<p class="memo">${esc(g.note)}</p>` : ''}
@@ -515,9 +522,9 @@ ${answerBox('얼음싹싹 한눈에 보기',
 </div></section>
 <section class="lsec"><div class="wrap">
   <h2>어디까지 가나요?</h2>
-  <p class="memo">인천광역시 전역(제물포구·영종구·미추홀구·연수구·남동구·부평구·계양구·서해구·검단구·강화군·옹진군),
-  경기도 부천시(원미구·소사구·오정구), 경기도 김포시까지 <b>육로로 갈 수 있는 곳은 모두</b> 갑니다.
-  배로만 들어가는 섬 지역은 어렵습니다. <a href="/area/">서비스 지역 전체 보기 →</a></p>
+  <p class="memo"><b>인천광역시 전역</b>(제물포구·영종구·미추홀구·연수구·남동구·부평구·계양구·서해구·검단구·강화군·옹진군),
+  <b>경기도 부천시</b>(원미구·소사구·오정구), <b>경기도 김포시</b>로 찾아갑니다.
+  어느 동네든 전화 주시면 바로 일정을 잡아 드립니다. <a href="/area/">서비스 지역 전체 보기 →</a></p>
 </div></section>
 ${adBand()}
 ${ctaBand('제빙기 상태가 궁금하면 전화 주세요')}`,
@@ -693,7 +700,7 @@ ${SITE.name}은 상업용 제빙기를 분해해 수조·급수관·분배관·�
 ## 사실 정보
 - 상호: ${SITE.name}
 - 전화: ${SITE.tel}
-- 서비스 지역: 인천광역시, 경기도 부천시, 경기도 김포시 (육로로 갈 수 있는 모든 동)
+- 서비스 지역: 인천광역시 전역, 경기도 부천시, 경기도 김포시
 - 비용: 일 생산량 50kg 이하 10만원부터, 100kg 이하 12만원부터. 호시자키는 2만원 높음.
   대형·모듈형은 전화 견적. 3개월 정기 20% 할인, 6개월 정기 10% 할인.
 - 작업 시간: 약 2시간. 작업 중 제빙기만 정지하고 영업은 계속 가능.
@@ -736,6 +743,77 @@ ${ctaBand('찾으시는 게 있으면 전화 주세요')}`,
   }));
 }
 
+/* 메인 페이지(src/index.html)를 사이트에 맞게 손본다.
+ * 원본은 홀로 쓰던 한 장짜리라 지역 페이지와 끊겨 있어서, 복사한 뒤
+ * 메뉴·푸터·지역 섹션을 붙이고 "시안" 표시를 뗀다. */
+function wireMainPage() {
+  const f = join(OUT, 'index.html');
+  let h = readFileSync(f, 'utf8');
+
+  // 상단 메뉴에 서비스 지역
+  h = h.replace('<a href="#machines">작업 기종</a>',
+    '<a href="#machines">작업 기종</a>\n      <a href="/area/">서비스 지역</a>');
+
+  // 푸터 메뉴를 실제 페이지로
+  h = h.replace(/<nav class="foot__nav"[^>]*>[\s\S]*?<\/nav>/,
+    `<nav class="foot__nav" aria-label="하단 메뉴">
+      <a href="/about/">업체 소개</a>
+      <a href="/area/">서비스 지역</a>
+      <a href="/why/">왜 청소하나</a>
+      <a href="/price/">가격</a>
+      <a href="/process/">작업 과정</a>
+      <a href="/faq/">자주 묻는 질문</a>
+      <a href="/privacy/">개인정보 안내</a>
+    </nav>`);
+
+  // "시안" 표시 걷어내기 — 실제로 운영하는 사이트다
+  h = h.replace('<p class="foot__note">이 페이지는 시안입니다. 가격과 사진은 확정 전 예시입니다.</p>', '');
+  h = h.replace('<p class="badge">시안용 예시 가격</p>', '');
+  h = h.replace('<br><small>시안: QR 이미지는 나중에 넣습니다.</small>', '');
+
+  // 가격·문의 사이에 서비스 지역 섹션
+  const guChips = REGIONS.cities.map((c) => {
+    const gus = c.gus.filter((g) => g.slug);
+    return `<div class="area-city">
+      <h3><a href="/area/${c.slug}/">${esc(c.short)}</a></h3>
+      <div class="chips">${(gus.length ? gus : [{ slug: null, name: '전체 동네' }])
+        .map((g) => `<a class="chip" href="${guUrl(c, g)}">${esc(g.name ?? c.short)}</a>`).join('')}</div>
+    </div>`;
+  }).join('');
+
+  const section = `
+<section class="section" id="area">
+  <div class="wrap">
+    <header class="head center">
+      <p class="kicker">서비스 지역</p>
+      <h2>인천 · 김포 · 부천, 어느 동네든 찾아갑니다</h2>
+    </header>
+    <div class="area-cities">${guChips}</div>
+    <p class="center" style="margin-top:28px">
+      <a class="btn btn--ghostb" href="/area/">우리 동네 보기 →</a>
+    </p>
+  </div>
+</section>
+`;
+  h = h.replace('<!-- 상담 신청 + 견적 폼 -->', section + '<!-- 상담 신청 -->');
+  h = h.replace('</head>', `<link rel="canonical" href="${SITE.origin}/">
+<link rel="stylesheet" href="/assets/region.css">
+<meta property="og:title" content="${esc(SITE.name)}">
+<meta property="og:description" content="인천·김포·부천 제빙기 분해 청소. 50kg 이하 10만원부터, 약 2시간. 전화 ${esc(SITE.tel)}">
+<meta property="og:url" content="${SITE.origin}/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="${esc(SITE.name)}">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="${SITE.origin}/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(SITE.name)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${SITE.origin}/assets/og.png">
+</head>`);
+  writeFileSync(f, h);
+}
+
 function copyStatic() {
   // 메인 페이지와 디자인 자산은 v3 를 그대로 쓴다
   // 메인 페이지와 디자인 자산만 가져온다. 내부 문서(README·프롬프트)와 미리보기는 빼고.
@@ -748,6 +826,7 @@ function copyStatic() {
 if (existsSync(OUT)) rmSync(OUT, { recursive: true });
 mkdirSync(OUT, { recursive: true });
 copyStatic();
+wireMainPage();
 buildArea();
 for (const c of REGIONS.cities) {
   buildCity(c);
