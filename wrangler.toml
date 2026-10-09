@@ -1,0 +1,8 @@
+# Cloudflare 배포 설정.
+# dist/ 를 정적 파일로 올립니다. (node build.mjs 가 먼저 dist/ 를 만듭니다)
+name = "icessak-site"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"

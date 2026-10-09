@@ -712,6 +712,29 @@ ${dong.map((p) => `- ${SITE.origin}${p.url}`).join('\n')}
 `);
 }
 
+/* 없는 주소로 들어왔을 때 보여 줄 쪽 */
+function build404() {
+  write('404.html', layout({
+    url: '/404.html', title: `페이지를 찾을 수 없습니다 | ${SITE.name}`,
+    desc: '주소가 잘못되었거나 없어진 페이지입니다.',
+    body: `
+<section class="lhero"><div class="wrap">
+  <h1>페이지를 찾을 수 없습니다</h1>
+  <p class="answer">주소가 잘못되었거나 없어진 쪽입니다.</p>
+</div></section>
+<section class="lsec"><div class="wrap">
+  <div class="chips">
+    <a class="chip chip--on" href="/">처음으로</a>
+    <a class="chip" href="/area/">서비스 지역</a>
+    <a class="chip" href="/price/">가격</a>
+    <a class="chip" href="/faq/">자주 묻는 질문</a>
+  </div>
+</div></section>
+${ctaBand('찾으시는 게 있으면 전화 주세요')}`,
+    noindex: true,
+  }));
+}
+
 function copyStatic() {
   // 메인 페이지와 디자인 자산은 v3 를 그대로 쓴다
   // 메인 페이지와 디자인 자산만 가져온다. 내부 문서(README·프롬프트)와 미리보기는 빼고.
@@ -735,6 +758,7 @@ for (const x of allDongs) {
   if (x.grade !== 'C') buildDong(x);
 }
 buildCommon();
+build404();
 
 /* 유사도 검사 (SEO_PLAN 3-1) -> 페이지마다 색인 여부 결정
  * 기준을 넘은 동네 페이지는 지우지 않고 noindex 로 두고 구 페이지를 대표 주소로 삼는다.
