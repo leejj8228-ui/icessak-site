@@ -141,3 +141,38 @@
   .lead-shot .pitch { font-size: 1.05rem; }
   .trust div { padding: 14px 14px; }
 }
+
+/* 그리드 칸은 min-width 가 auto 라서 안쪽 내용이 넓으면 칸을 밀어낸다.
+   메인의 서비스 지역 칩 줄이 화면 밖으로 삐져나가던 원인. */
+.area-cities > * { min-width: 0; }
+.area-city .chips { flex-wrap: wrap; overflow: visible; margin-right: 0; padding-right: 0; }
+.trust > * { min-width: 0; }
+.lead-shot__grid > * { min-width: 0; }
+
+/* 서비스 지역의 시 카드도 같은 min-width 문제 */
+.cities > *, .city { min-width: 0; }
+.city .chips { flex-wrap: wrap; overflow: visible; margin-right: 0; padding-right: 0; }
+
+/* 아주 좁은 화면(320px 급)에서 머리말이 넘치지 않게 */
+@media (max-width: 360px) {
+  .top__inner { gap: 8px; }
+  .logo img { width: 104px; height: auto; }
+  .top__tel { font-size: 13px; }
+  .top__cta { padding: 0 10px; font-size: 13px; }
+  .crumb { font-size: 12px; }
+}
+@media (max-width: 400px) {
+  .price-mini { table-layout: fixed; width: 100%; }
+  .price-mini th, .price-mini td { padding: 10px 8px; font-size: 14px; word-break: keep-all; }
+}
+
+/* 모바일에서는 사진을 먼저 보여 주고, 버튼은 한 줄로 */
+@media (max-width: 900px) {
+  .lead-shot__grid { display: flex; flex-direction: column; }
+  .lead-shot__pics { order: -1; }          /* 사진을 제목보다 위로 */
+}
+@media (max-width: 640px) {
+  .lead-shot .acts { gap: 8px; }
+  .lead-shot .acts .btn { flex: 1 1 auto; min-width: 0; padding: 0 12px; font-size: 15px; }
+  .lead-shot .acts .btn--lg { min-height: 48px; }
+}

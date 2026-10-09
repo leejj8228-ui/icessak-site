@@ -409,7 +409,9 @@ h3 { font-size: 1.1875rem; font-weight: 700; line-height: 1.35; letter-spacing: 
 .foot__logo { display: block; height: 30px; width: auto; }
 .foot__tel { max-width: none; font-size: 0.9375rem; color: var(--text-2); }
 .foot__tel a { color: var(--text); font-weight: 700; text-decoration: none; }
-.foot__nav { display: flex; gap: 28px; }
+.foot__nav { display: flex; flex-wrap: wrap; gap: 10px 24px; min-width: 0; }
+.top__inner { min-width: 0; }
+.brands, .cases, .trust { min-width: 0; }
 .foot__nav a { text-decoration: none; font-size: 0.9375rem; color: var(--text-2); }
 .foot__nav a:hover { color: var(--blue); }
 .foot__note { width: 100%; max-width: none; font-size: 0.875rem; color: var(--text-2); }
