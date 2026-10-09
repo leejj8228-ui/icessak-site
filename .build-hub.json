@@ -127,21 +127,21 @@
  },
  "about/index.html": {
   "maxSim": 0.119,
-  "unique": 249,
+  "unique": 248,
   "passSim": true,
   "passUnique": true,
   "pass": true
  },
  "why/index.html": {
   "maxSim": 0.027,
-  "unique": 1671,
+  "unique": 1669,
   "passSim": true,
   "passUnique": true,
   "pass": true
  },
  "price/index.html": {
-  "maxSim": 0.051,
-  "unique": 211,
+  "maxSim": 0.052,
+  "unique": 200,
   "passSim": true,
   "passUnique": true,
   "pass": true
@@ -155,7 +155,7 @@
  },
  "faq/index.html": {
   "maxSim": 0.059,
-  "unique": 133,
+  "unique": 130,
   "passSim": true,
   "passUnique": true,
   "pass": true
