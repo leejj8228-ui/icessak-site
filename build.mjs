@@ -105,6 +105,14 @@ const LEAD = [
 ];
 
 /* ---------------------------------------------------------------- 공통 틀 */
+/* 검색엔진 소유 확인 메타. site.json 의 verification 에 값이 있을 때만 넣는다. */
+const VERIFY = SITE.verification ?? {};
+const verifyTags = () => [
+  VERIFY.google && `<meta name="google-site-verification" content="${esc(VERIFY.google)}">`,
+  VERIFY.naver && `<meta name="naver-site-verification" content="${esc(VERIFY.naver)}">`,
+  VERIFY.bing && `<meta name="msvalidate.01" content="${esc(VERIFY.bing)}">`,
+].filter(Boolean).join('\n');
+
 const TEL_HREF = `tel:${SITE.tel}`;
 
 function layout({ url, title, desc, crumb = [], body, noindex = false, canonical, jsonld = [] }) {
@@ -117,6 +125,7 @@ function layout({ url, title, desc, crumb = [], body, noindex = false, canonical
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <meta name="theme-color" content="#ffffff">
+${verifyTags()}
 ${noindex ? '<meta name="robots" content="noindex, follow">\n' : ''}<link rel="canonical" href="${esc(canonical ?? abs)}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -837,7 +846,7 @@ function wireMainPage() {
 </section>
 `;
   h = h.replace('<!-- 상담 신청 + 견적 폼 -->', section + '<!-- 상담 신청 -->');
-  h = h.replace('</head>', `<link rel="canonical" href="${SITE.origin}/">
+  h = h.replace('</head>', `${verifyTags()}\n<link rel="canonical" href="${SITE.origin}/">
 <link rel="stylesheet" href="/assets/region.css">
 <meta property="og:title" content="${esc(SITE.name)}">
 <meta property="og:description" content="인천·김포·부천 제빙기 분해 청소. 50kg 이하 10만원부터, 약 2시간. 전화 ${esc(SITE.tel)}">
