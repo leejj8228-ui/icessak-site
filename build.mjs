@@ -178,6 +178,55 @@ const ctaBand = (headline) => `
   <a class="tel" href="${TEL_HREF}">${esc(SITE.tel)}</a>
 </div></section>`;
 
+
+/* 첫 화면에 쓸 전후 사진 한 쌍과, 아래에 더 보여 줄 나머지 */
+function photoSet(key) {
+  const i = Math.floor(seedOf(key + ':pic')() * AD_PHOTOS.length);
+  return { head: AD_PHOTOS[i], rest: AD_PHOTOS.filter((_, j) => j !== i) };
+}
+
+/* 손님이 처음 보는 쪽이라 사진과 전문성을 맨 위에 둔다.
+ * 문구는 모든 쪽이 같으므로 data-shared 로 표시해 비교에서 뺀다. */
+const leadShot = ({ kicker, title, pics, extra = '' }) => `
+<section class="lhero lead-shot"><div class="wrap lead-shot__grid">
+  <div>
+    <p class="kicker">${esc(kicker)}</p>
+    <h1>${title}</h1>
+    <div data-shared>
+      <p class="pitch">겉만 닦지 않습니다. <em>수조·급수관·분배관·제빙판·순환 펌프까지</em> 전부 떼어 내 씻습니다.</p>
+      <p class="sub">제빙기만 다룹니다. 분해부터 시운전까지 약 2시간, 50kg 이하 10만원부터.</p>
+    </div>
+    ${extra}
+    <div class="acts" data-shared>
+      <a class="btn btn--blue btn--lg" href="${TEL_HREF}">${esc(SITE.tel)} 전화 견적</a>
+      <a class="btn btn--ghostb" href="/process/">작업 과정 보기 →</a>
+    </div>
+  </div>
+  <div class="lead-shot__pics">
+    <figure><img src="${pics.head[0]}" alt="청소 전 ${esc(pics.head[2])}"><figcaption>청소 전</figcaption></figure>
+    <figure><img src="${pics.head[1]}" alt="청소 후 ${esc(pics.head[2])}"><figcaption>청소 후</figcaption></figure>
+  </div>
+</div></section>`;
+
+/* 말 대신 사실로 적은 근거 4칸 */
+const trustRow = () => `
+<section class="lsec" data-shared style="padding:36px 0"><div class="wrap"><div class="trust">
+  <div><b>분해 범위</b><p>5개 부위 전부<small>수조·급수관·분배관·제빙판·펌프</small></p></div>
+  <div><b>세척 방식</b><p>고온 스팀 + 식품용 세정제<small>헹군 뒤 첫 얼음은 버립니다</small></p></div>
+  <div><b>작업 시간</b><p>약 2시간<small>제빙기만 멈추고 영업은 그대로</small></p></div>
+  <div><b>남는 것</b><p>전후 사진과 기록지<small>작업 당일 문자로 전달</small></p></div>
+</div></div></section>`;
+
+/* 아래쪽에 전후 사진 더 */
+const morePhotos = (rest) => `
+<section class="lsec" data-shared><div class="wrap">
+  <h2>이렇게 달라집니다</h2>
+  <div class="cases">${rest.map(([b, a, t]) => `<div class="case">
+    <div class="case__img"><img src="${b}" alt="청소 전 ${t}" loading="lazy"><img src="${a}" alt="청소 후 ${t}" loading="lazy"></div>
+    <div class="case__body"><h3>${t}</h3></div></div>`).join('')}</div>
+  <p class="muted">얼음싹싹이 직접 작업하고 찍은 사진입니다. 매장 정보는 담지 않았습니다.</p>
+</div></section>`;
+
 /* ---------------------------------------------------------------- 지역 훑기 */
 const cityOf = (slug) => REGIONS.cities.find((c) => c.slug === slug);
 const allGus = REGIONS.cities.flatMap((c) =>
@@ -356,31 +405,30 @@ function buildGu(c, g) {
     { name: c.short, url: `/area/${c.slug}/` }, { name: g.name }];
   const open = (g.groups ?? []).filter((d) => grade(d) !== 'C').length;
   const guCases = (g.groups ?? []).flatMap((d) => casesOf(d.slug));
+  const pics = photoSet(guUrl(c, g));
+  const guQA = pickQA(guUrl(c, g) + ":gu", 9);
   const body = `
-<section class="lhero"><div class="wrap">
-  <p class="kicker">${esc(c.short)}</p>
-  <h1>${esc(g.name)} 제빙기 청소</h1>
-  <p class="answer">${esc(g.name)} <em>${g.dongs.length}개 동</em> 출장. 50kg 이하 10만원부터.</p>
-  ${g.legacy.length ? `<p class="legacy">2026년 7월 개편 전 이름: ${esc(g.legacy.join(' · '))}</p>` : ''}
-</div></section>
+${leadShot({ kicker: c.short, title: `${esc(g.name)} 제빙기<br>분해 청소`, pics,
+   extra: g.legacy.length
+     ? `<p class="sub">2026년 7월 개편 전 이름: ${esc(g.legacy.join(' · '))}</p>` : '' })}
+${trustRow()}
 <section class="lsec"><div class="wrap">
-  <h2>${esc(g.name)}의 동</h2>
-  
+  <h2>${esc(g.name)}의 동네</h2>
   <div class="dong-grid">${(g.groups ?? []).map((d) => dongCell(c, g, d)).join('')}</div>
   <p class="muted">행정동으로는 ${g.dongs.length}개 동입니다: ${g.dongs.map((d) => d.name).join(' · ')}</p>
   ${g.note ? `<p class="memo">${esc(g.note)}</p>` : ''}
   ${g.water ? `<p class="memo">수돗물 경도는 ${esc(g.water)}입니다. 경도가 높을수록 물때가 빨리 쌓여 청소 주기를 짧게 잡는 것이 좋습니다.</p>` : ''}
-  ${g.rounds ? `<p class="memo">${esc(g.name)}는 보통 ${esc(g.rounds)}에 순회합니다. 그 요일에 맞추면 일정 잡기가 쉽습니다.</p>` : ''}
+  ${g.rounds ? `<p class="memo">${esc(g.name)}는 보통 ${esc(g.rounds)}에 순회합니다.</p>` : ''}
 </div></section>
+${morePhotos(pics.rest)}
 <section class="lsec"><div class="wrap">
-  <h2>${esc(g.name)}에서 한 작업</h2>
-  ${guCases.length
-    ? `<div class="cases">${guCases.slice(0, 4).map(caseCard).join('')}</div>`
-    : `<p class="memo">${esc(g.name)}에서 찍은 작업 사진이 아직 없습니다. 작업한 매장의 동의를 받은 사진부터 올립니다.</p>`}
+  <h2>${esc(g.name)}에서 많이 묻는 것</h2>
+  <div class="faq__list">${guQA.map((x) =>
+    `<details open><summary>${esc(x.q)}</summary><p>${esc(x.a)}</p></details>`).join('')}</div>
 </div></section>
 <section class="lsec" data-shared><div class="wrap">
-  <p class="price-line">50kg 이하 10만원~ · 100kg 이하 12만원~ · 대형은 전화 견적
-    <a href="/price/">가격 자세히 →</a> <a href="/process/">작업 과정 →</a></p>
+  <p class="price-line">50kg 이하 10만원~ · 100kg 이하 12만원~
+    <a href="/price/">가격 →</a> <a href="/why/">왜 청소하나 →</a> <a href="/faq/">자주 묻는 질문 →</a></p>
 </div></section>
 ${ctaBand(`${g.name} 견적, 사진 한 장이면 됩니다`)}`;
   page(guUrl(c, g), layout({
@@ -390,6 +438,7 @@ ${ctaBand(`${g.name} 견적, 사진 한 장이면 됩니다`)}`;
     crumb, body,
     jsonld: [
       localBusiness([`${c.name} ${g.name}`]),
+      faqPage(guQA),
       breadcrumb([{ name: '홈', url: '/' }, { name: '서비스 지역', url: '/area/' },
         { name: c.short, url: `/area/${c.slug}/` }, { name: g.name, url: guUrl(c, g) }]),
     ],
@@ -419,20 +468,18 @@ function buildDong({ city: c, gu: g, dong: d, grade: gr }) {
   const neighbors = (d.neighbors ?? [])
     .map((s) => allDongs.find((x) => x.dong.slug === s))
     .filter(Boolean).filter((x) => x.grade !== 'C');
-  const covers = (d.dongs ?? []).length > 1
-    ? `<p class="muted">행정동으로는 ${d.dongs.join(' · ')}입니다.</p>` : '';
-
   const key = url;                                   // 주소 전체를 씨앗으로 (동 이름이 겹쳐도 달라지게)
   const rnd = seedOf(key + ':layout');
   const qa = pickQA(key, 8 + Math.floor(rnd() * 4));         // 8~11개
-  const lead = LEAD[Math.floor(seedOf(key)() * LEAD.length)];
+  const pics = photoSet(key);
+  const covers = (d.dongs ?? []).length > 1
+    ? `<p class="sub">행정동으로는 ${d.dongs.join(' · ')}입니다.</p>` : '';
 
   const secQA = qa.length ? `<section class="lsec"><div class="wrap">
   <h2>${esc(d.name)}에서 많이 묻는 것</h2>
   <div class="faq__list">${qa.map((x) =>
     `<details open><summary>${esc(x.q)}</summary><p>${esc(x.a)}</p></details>`).join('')}</div>
 </div></section>` : '';
-  const secPhoto = adBand();
   const secNear = neighbors.length ? `<section class="lsec"><div class="wrap">
   <h2>가까운 동네</h2>
   <div class="chips">${neighbors.map((x) =>
@@ -441,21 +488,16 @@ function buildDong({ city: c, gu: g, dong: d, grade: gr }) {
 </div></section>` : '';
   const secLinks = `<section class="lsec" data-shared><div class="wrap">
   <p class="price-line">50kg 이하 10만원~ · 100kg 이하 12만원~
-    <a href="/price/">가격 →</a> <a href="/process/">작업 과정 →</a> <a href="/why/">왜 청소해야 하나 →</a></p>
+    <a href="/price/">가격 →</a> <a href="/why/">왜 청소하나 →</a> <a href="/faq/">자주 묻는 질문 →</a></p>
 </div></section>`;
-  // 문단 순서도 쪽마다 다르게
-  const middle = shuffled([secQA, secPhoto, secNear], rnd).join('\n');
 
   const body = `
-<section class="lhero"><div class="wrap">
-  <p class="kicker">${esc(c.short)}${g.slug ? ` ${g.name}` : ''}</p>
-  <h1>${esc(d.name)} 제빙기 청소</h1>
-  <p class="answer">${lead(esc(d.name))}</p>
-  ${covers}
-</div></section>
-${answerBox(`${d.name} 제빙기 청소, 얼마이고 얼마나 걸리나요?`,
-  `${d.name} 제빙기 분해 청소는 일 생산량 50kg 이하 기준 10만원부터이고, 작업은 약 2시간 걸립니다. 작업 중에는 제빙기만 멈추고 영업은 그대로 하실 수 있습니다.`)}
-${middle}
+${leadShot({ kicker: `${c.short}${g.slug ? ` ${g.name}` : ''}`,
+            title: `${esc(d.name)} 제빙기<br>분해 청소`, pics, extra: covers })}
+${trustRow()}
+${morePhotos(pics.rest)}
+${secQA}
+${secNear}
 ${secLinks}
 ${ctaBand(`${d.name} 견적, 전화 한 통이면 됩니다`)}`;
 

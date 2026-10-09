@@ -108,3 +108,36 @@
 .area-city .chips .chip { font-size: 14px; padding: 6px 10px; }
 .center { text-align: center; }
 @media (max-width: 900px) { .area-cities { grid-template-columns: 1fr; gap: 20px; } }
+
+/* ── 동네·구 페이지 첫 화면: 작업 사진을 맨 위로 ── */
+.lead-shot { padding: 40px 0 44px; }
+.lead-shot__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+.lead-shot__pics { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.lead-shot__pics figure { margin: 0; position: relative; }
+.lead-shot__pics img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.lead-shot__pics figcaption { position: absolute; left: 0; top: 0; background: #111a23; color: #fff;
+  font-size: 12px; font-weight: 700; padding: 4px 10px; }
+.lead-shot__pics figure:last-child figcaption { background: var(--blue); }
+.lead-shot h1 { font-size: clamp(2.1rem, 4.4vw, 3.4rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.1; }
+.lead-shot .pitch { font-size: 1.2rem; font-weight: 700; margin-top: 16px; line-height: 1.45; }
+.lead-shot .pitch em { font-style: normal; color: var(--blue); }
+.lead-shot .sub { color: var(--text-2); margin-top: 10px; font-size: 15px; }
+.lead-shot .acts { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+
+.trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line);
+  border: 1px solid var(--line); }
+.trust div { background: #fff; padding: 20px 18px; }
+.trust b { display: block; color: var(--blue); font-size: 13px; font-weight: 800; margin-bottom: 6px; }
+.trust p { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.4; }
+.trust small { display: block; color: var(--text-2); font-weight: 400; font-size: 13px; margin-top: 4px; }
+
+@media (max-width: 900px) {
+  .lead-shot__grid { grid-template-columns: 1fr; gap: 20px; }
+  .trust { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .lead-shot { padding: 20px 0 24px; }
+  .lead-shot h1 { font-size: 1.9rem; }
+  .lead-shot .pitch { font-size: 1.05rem; }
+  .trust div { padding: 14px 14px; }
+}
