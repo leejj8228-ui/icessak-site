@@ -164,7 +164,6 @@ ${body}
     <p><strong>${esc(SITE.name)}</strong> · ${esc(SITE.tagline)}</p>
     <p><a href="${TEL_HREF}">${esc(SITE.tel)}</a></p>
     <nav><a href="/about/">업체 소개</a> · <a href="/area/">서비스 지역</a> · <a href="/why/">왜 청소하나</a> · <a href="/price/">가격</a> · <a href="/process/">작업 과정</a> · <a href="/faq/">자주 묻는 질문</a> · <a href="/privacy/">개인정보 안내</a></nav>
-    <p class="muted">사업자 정보는 등록 후 표시됩니다.</p>
   </div>
 </footer>
 </body>
