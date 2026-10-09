@@ -1,14 +1,14 @@
 {
  "area/index.html": {
-  "maxSim": 0.109,
-  "unique": 120,
+  "maxSim": 0.123,
+  "unique": 87,
   "passSim": true,
   "passUnique": true,
   "pass": true
  },
  "area/incheon/index.html": {
   "maxSim": 0.158,
-  "unique": 63,
+  "unique": 64,
   "passSim": true,
   "passUnique": true,
   "pass": true
@@ -126,8 +126,8 @@
   "pass": true
  },
  "about/index.html": {
-  "maxSim": 0.104,
-  "unique": 263,
+  "maxSim": 0.123,
+  "unique": 249,
   "passSim": true,
   "passUnique": true,
   "pass": true

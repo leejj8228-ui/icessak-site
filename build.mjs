@@ -167,7 +167,7 @@ ${body}
 /* 상담 유도 띠 (공통) */
 const ctaBand = (headline) => `
 <section class="cta-band" data-shared><div class="wrap row">
-  <div><h2>${esc(headline)}</h2><p>브랜드와 용량만 말씀해 주세요. 모르면 명판 사진으로 확인해 드립니다.</p></div>
+  <div><h2>${esc(headline)}</h2><p>브랜드와 용량만 말씀해 주세요. 모르시면 제빙기 사진 한 장만 찍어 보내 주셔도 됩니다.</p></div>
   <a class="tel" href="${TEL_HREF}">${esc(SITE.tel)}</a>
 </div></section>`;
 
@@ -264,7 +264,7 @@ function buildArea() {
 <section class="lhero"><div class="wrap">
   <p class="kicker">서비스 지역</p>
   <h1>인천 · 김포 · 부천</h1>
-  <p class="answer">행정동 <em>${allDongs.length}곳</em> 중 출장 가능한 지역으로 찾아갑니다.</p>
+  <p class="answer">인천·김포·부천, <em>육로로 갈 수 있는 곳이면 어디든</em> 찾아갑니다.</p>
   <div class="stats">
     <div><b>${REGIONS.cities.length}</b>개 시</div>
     <div><b>${allGus.length}</b>개 구·군</div>
@@ -287,9 +287,10 @@ function buildArea() {
   </div>
 </div></section>
 <section class="lsec"><div class="wrap">
-  <h2>동 페이지는 실제로 다녀온 곳부터 엽니다</h2>
-  <p class="memo">동 이름만 바꾼 페이지는 만들지 않습니다. 그 동에서 실제로 한 작업과 현장 메모가 쌓인 곳부터 페이지를 엽니다.
-  지금 열려 있는 동 페이지는 <b>${openDongs}곳</b>입니다. 페이지가 없는 동도 <a href="${TEL_HREF}">전화</a> 주시면 출장 갑니다.</p>
+  <h2>동네마다 찾아갑니다</h2>
+  <p class="memo">위에서 시 → 구 → 동네 순으로 들어가면 <b>동네별 안내</b>가 나옵니다.
+  목록에 없는 동네도 <a href="${TEL_HREF}">전화</a> 주시면 그대로 출장 갑니다.
+  배로만 들어가는 섬 지역만 어렵습니다.</p>
 </div></section>
 ${ctaBand('우리 지역도 오시나요? 전화 한 통이면 됩니다')}`;
   page('/area/', layout({
