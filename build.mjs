@@ -168,6 +168,7 @@ ${crumb.length ? `<nav class="wrap crumb" aria-label="이동 경로" data-shared
 <main id="main">
 ${body}
 </main>
+${callFab()}
 <footer class="foot" data-shared>
   <div class="wrap">
     <p><strong>${esc(SITE.name)}</strong> · ${esc(SITE.tagline)}</p>
@@ -179,6 +180,28 @@ ${body}
 </html>
 `;
 }
+
+/* 전화 버튼 두 가지 — 둘 다 모든 쪽에 넣는다.
+ * callFab   : 화면에 계속 떠 있어, 어디서 마음이 바뀌어도 바로 누를 수 있다.
+ * callStrip : 사진을 보고 설득된 그 자리에서 바로 누르게 하는 본문 중간 띠.
+ */
+const PHONE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-170-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>';
+
+const callFab = () => `
+<a class="callfab" href="${TEL_HREF}" aria-label="전화로 견적 문의 ${esc(SITE.tel)}" data-shared>
+  <span class="ico">${PHONE_SVG}</span>
+  <span><span class="t">전화 견적</span><span class="n">${esc(SITE.tel)}</span></span>
+</a>`;
+
+const callStrip = (headline = '전화 한 통이면 바로 견적이 나옵니다') => `
+<section class="callstrip" data-shared aria-label="전화 견적"><div class="wrap in">
+  <div>
+    <p class="q">우리 제빙기는 얼마일까요?</p>
+    <p class="h">${esc(headline)}</p>
+    <p class="sub">브랜드와 용량만 말씀해 주세요. 모르시면 제빙기 사진 한 장이면 됩니다.</p>
+  </div>
+  <a class="btn-call" href="${TEL_HREF}">${PHONE_SVG}${esc(SITE.tel)}</a>
+</div></section>`;
 
 /* 상담 유도 띠 (공통) */
 const ctaBand = (headline) => `
@@ -430,6 +453,7 @@ ${trustRow()}
   ${g.rounds ? `<p class="memo">${esc(g.name)}는 보통 ${esc(g.rounds)}에 순회합니다.</p>` : ''}
 </div></section>
 ${morePhotos(pics.rest)}
+${callStrip(`${g.name} 제빙기, 전화 한 통이면 견적이 나옵니다`)}
 <section class="lsec"><div class="wrap">
   <h2>${esc(g.name)}에서 많이 묻는 것</h2>
   <div class="faq__list">${guQA.map((x) =>
@@ -505,6 +529,7 @@ ${leadShot({ kicker: `${c.short}${g.slug ? ` ${g.name}` : ''}`,
             title: `${esc(d.name)} 제빙기<br>분해 청소`, pics, extra: covers })}
 ${trustRow()}
 ${morePhotos(pics.rest)}
+${callStrip(`${d.name} 제빙기, 전화 한 통이면 견적이 나옵니다`)}
 ${secQA}
 ${secNear}
 ${secLinks}
@@ -846,6 +871,9 @@ function wireMainPage() {
 </section>
 `;
   h = h.replace('<!-- 상담 신청 + 견적 폼 -->', section + '<!-- 상담 신청 -->');
+  // 떠 있는 전화 버튼과 겹치므로 옛 하단 고정 바는 뺀다
+  h = h.replace(/<nav class="dock"[\s\S]*?<\/nav>/, '');
+  h = h.replace('<script src="main.js">', callFab() + '\n<script src="main.js">');
   h = h.replace('</head>', `${verifyTags()}\n<link rel="canonical" href="${SITE.origin}/">
 <link rel="stylesheet" href="/assets/region.css">
 <meta property="og:title" content="${esc(SITE.name)}">
