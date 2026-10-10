@@ -7,7 +7,7 @@
   "pass": true
  },
  "area/incheon/jemulpo-gu/yeonan/index.html": {
-  "maxSim": 0.269,
+  "maxSim": 0.281,
   "unique": 4,
   "passSim": true,
   "passUnique": false,
@@ -21,7 +21,7 @@
   "pass": true
  },
  "area/incheon/jemulpo-gu/dowon/index.html": {
-  "maxSim": 0.369,
+  "maxSim": 0.37,
   "unique": 8,
   "passSim": true,
   "passUnique": false,
@@ -35,7 +35,7 @@
   "pass": true
  },
  "area/incheon/jemulpo-gu/dongincheon/index.html": {
-  "maxSim": 0.259,
+  "maxSim": 0.254,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
@@ -49,21 +49,21 @@
   "pass": true
  },
  "area/incheon/jemulpo-gu/manseok/index.html": {
-  "maxSim": 0.269,
+  "maxSim": 0.271,
   "unique": 6,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/jemulpo-gu/hwasu/index.html": {
-  "maxSim": 0.22,
+  "maxSim": 0.219,
   "unique": 12,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/jemulpo-gu/songhyeon/index.html": {
-  "maxSim": 0.369,
+  "maxSim": 0.37,
   "unique": 9,
   "passSim": true,
   "passUnique": false,
@@ -77,14 +77,14 @@
   "pass": true
  },
  "area/incheon/jemulpo-gu/geumchang/index.html": {
-  "maxSim": 0.236,
+  "maxSim": 0.235,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/yeongjong-gu/yeongjong/index.html": {
-  "maxSim": 0.327,
+  "maxSim": 0.326,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
@@ -98,7 +98,7 @@
   "pass": true
  },
  "area/incheon/yeongjong-gu/yongyu/index.html": {
-  "maxSim": 0.327,
+  "maxSim": 0.339,
   "unique": 5,
   "passSim": true,
   "passUnique": false,
@@ -126,28 +126,28 @@
   "pass": true
  },
  "area/incheon/michuhol-gu/dohwa/index.html": {
-  "maxSim": 0.33,
+  "maxSim": 0.329,
   "unique": 19,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/michuhol-gu/juan/index.html": {
-  "maxSim": 0.316,
+  "maxSim": 0.325,
   "unique": 38,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/michuhol-gu/gwangyo/index.html": {
-  "maxSim": 0.3,
+  "maxSim": 0.296,
   "unique": 12,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/michuhol-gu/munhak/index.html": {
-  "maxSim": 0.259,
+  "maxSim": 0.258,
   "unique": 6,
   "passSim": true,
   "passUnique": false,
@@ -168,7 +168,7 @@
   "pass": true
  },
  "area/incheon/yeonsu-gu/yeonsu/index.html": {
-  "maxSim": 0.259,
+  "maxSim": 0.258,
   "unique": 16,
   "passSim": true,
   "passUnique": false,
@@ -196,7 +196,7 @@
   "pass": true
  },
  "area/incheon/namdong-gu/guwol/index.html": {
-  "maxSim": 0.33,
+  "maxSim": 0.329,
   "unique": 22,
   "passSim": true,
   "passUnique": false,
@@ -210,7 +210,7 @@
   "pass": true
  },
  "area/incheon/namdong-gu/mansu/index.html": {
-  "maxSim": 0.269,
+  "maxSim": 0.271,
   "unique": 24,
   "passSim": true,
   "passUnique": false,
@@ -231,14 +231,14 @@
   "pass": true
  },
  "area/incheon/namdong-gu/namchondorim/index.html": {
-  "maxSim": 0.414,
+  "maxSim": 0.408,
   "unique": 6,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/namdong-gu/nonhyeon/index.html": {
-  "maxSim": 0.288,
+  "maxSim": 0.296,
   "unique": 11,
   "passSim": true,
   "passUnique": false,
@@ -273,7 +273,7 @@
   "pass": true
  },
  "area/incheon/bupyeong-gu/galsan/index.html": {
-  "maxSim": 0.247,
+  "maxSim": 0.244,
   "unique": 12,
   "passSim": true,
   "passUnique": false,
@@ -294,7 +294,7 @@
   "pass": true
  },
  "area/incheon/bupyeong-gu/ilsin/index.html": {
-  "maxSim": 0.298,
+  "maxSim": 0.299,
   "unique": 11,
   "passSim": true,
   "passUnique": false,
@@ -315,7 +315,7 @@
   "pass": true
  },
  "area/incheon/gyeyang-gu/gyesan/index.html": {
-  "maxSim": 0.316,
+  "maxSim": 0.325,
   "unique": 15,
   "passSim": true,
   "passUnique": false,
@@ -329,21 +329,21 @@
   "pass": true
  },
  "area/incheon/gyeyang-gu/jakjeonseoun/index.html": {
-  "maxSim": 0.293,
+  "maxSim": 0.306,
   "unique": 4,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/gyeyang-gu/gyeyang/index.html": {
-  "maxSim": 0.287,
+  "maxSim": 0.286,
   "unique": 13,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/seohae-gu/geomamgyeongseo/index.html": {
-  "maxSim": 0.252,
+  "maxSim": 0.247,
   "unique": 5,
   "passSim": true,
   "passUnique": false,
@@ -357,7 +357,7 @@
   "pass": true
  },
  "area/incheon/seohae-gu/cheongna/index.html": {
-  "maxSim": 0.271,
+  "maxSim": 0.268,
   "unique": 11,
   "passSim": true,
   "passUnique": false,
@@ -371,7 +371,7 @@
   "pass": true
  },
  "area/incheon/seohae-gu/seongnam/index.html": {
-  "maxSim": 0.24,
+  "maxSim": 0.239,
   "unique": 22,
   "passSim": true,
   "passUnique": false,
@@ -385,14 +385,14 @@
   "pass": true
  },
  "area/incheon/seohae-gu/gajwa/index.html": {
-  "maxSim": 0.242,
+  "maxSim": 0.241,
   "unique": 21,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/geomdan-gu/geomdan/index.html": {
-  "maxSim": 0.3,
+  "maxSim": 0.296,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
@@ -413,7 +413,7 @@
   "pass": true
  },
  "area/incheon/geomdan-gu/dangha/index.html": {
-  "maxSim": 0.301,
+  "maxSim": 0.302,
   "unique": 10,
   "passSim": true,
   "passUnique": false,
@@ -434,7 +434,7 @@
   "pass": true
  },
  "area/incheon/geomdan-gu/ara/index.html": {
-  "maxSim": 0.262,
+  "maxSim": 0.26,
   "unique": 15,
   "passSim": true,
   "passUnique": false,
@@ -455,42 +455,42 @@
   "pass": true
  },
  "area/incheon/ganghwa-gun/bureun-myeon/index.html": {
-  "maxSim": 0.257,
+  "maxSim": 0.253,
   "unique": 11,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/ganghwa-gun/gilsang-myeon/index.html": {
-  "maxSim": 0.255,
+  "maxSim": 0.253,
   "unique": 12,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/ganghwa-gun/hwado-myeon/index.html": {
-  "maxSim": 0.319,
+  "maxSim": 0.317,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/ganghwa-gun/yangdo-myeon/index.html": {
-  "maxSim": 0.255,
+  "maxSim": 0.253,
   "unique": 6,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/ganghwa-gun/naega-myeon/index.html": {
-  "maxSim": 0.266,
+  "maxSim": 0.263,
   "unique": 10,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/incheon/ganghwa-gun/hajeom-myeon/index.html": {
-  "maxSim": 0.262,
+  "maxSim": 0.258,
   "unique": 11,
   "passSim": true,
   "passUnique": false,
@@ -504,7 +504,7 @@
   "pass": true
  },
  "area/incheon/ganghwa-gun/songhae-myeon/index.html": {
-  "maxSim": 0.242,
+  "maxSim": 0.241,
   "unique": 9,
   "passSim": true,
   "passUnique": false,
@@ -518,7 +518,7 @@
   "pass": true
  },
  "area/incheon/ganghwa-gun/samsan-myeon/index.html": {
-  "maxSim": 0.299,
+  "maxSim": 0.3,
   "unique": 5,
   "passSim": true,
   "passUnique": false,
@@ -539,7 +539,7 @@
   "pass": true
  },
  "area/bucheon/wonmi-gu/wonmi/index.html": {
-  "maxSim": 0.288,
+  "maxSim": 0.296,
   "unique": 12,
   "passSim": true,
   "passUnique": false,
@@ -567,7 +567,7 @@
   "pass": true
  },
  "area/bucheon/wonmi-gu/dodang/index.html": {
-  "maxSim": 0.26,
+  "maxSim": 0.259,
   "unique": 8,
   "passSim": true,
   "passUnique": false,
@@ -581,7 +581,7 @@
   "pass": true
  },
  "area/bucheon/wonmi-gu/jung/index.html": {
-  "maxSim": 0.258,
+  "maxSim": 0.26,
   "unique": 25,
   "passSim": true,
   "passUnique": false,
@@ -602,21 +602,21 @@
   "pass": true
  },
  "area/bucheon/sosa-gu/sosabon/index.html": {
-  "maxSim": 0.269,
+  "maxSim": 0.266,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/bucheon/sosa-gu/beombak/index.html": {
-  "maxSim": 0.366,
+  "maxSim": 0.376,
   "unique": 11,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/bucheon/sosa-gu/okgil/index.html": {
-  "maxSim": 0.277,
+  "maxSim": 0.278,
   "unique": 5,
   "passSim": true,
   "passUnique": false,
@@ -630,21 +630,21 @@
   "pass": true
  },
  "area/bucheon/sosa-gu/yeokgok/index.html": {
-  "maxSim": 0.304,
+  "maxSim": 0.303,
   "unique": 3,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/bucheon/sosa-gu/songnae/index.html": {
-  "maxSim": 0.271,
+  "maxSim": 0.268,
   "unique": 14,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/bucheon/ojeong-gu/seonggok/index.html": {
-  "maxSim": 0.269,
+  "maxSim": 0.281,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
@@ -658,21 +658,21 @@
   "pass": true
  },
  "area/bucheon/ojeong-gu/gogangbon/index.html": {
-  "maxSim": 0.414,
+  "maxSim": 0.408,
   "unique": 2,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/bucheon/ojeong-gu/gogang/index.html": {
-  "maxSim": 0.327,
+  "maxSim": 0.339,
   "unique": 6,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/bucheon/ojeong-gu/ojeong/index.html": {
-  "maxSim": 0.271,
+  "maxSim": 0.27,
   "unique": 5,
   "passSim": true,
   "passUnique": false,
@@ -693,14 +693,14 @@
   "pass": true
  },
  "area/gimpo/gochon-eup/index.html": {
-  "maxSim": 0.327,
+  "maxSim": 0.326,
   "unique": 9,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/gimpo/yangchon-eup/index.html": {
-  "maxSim": 0.267,
+  "maxSim": 0.263,
   "unique": 14,
   "passSim": true,
   "passUnique": false,
@@ -728,7 +728,7 @@
   "pass": true
  },
  "area/gimpo/gimpobon/index.html": {
-  "maxSim": 0.298,
+  "maxSim": 0.299,
   "unique": 10,
   "passSim": true,
   "passUnique": false,
@@ -756,28 +756,28 @@
   "pass": true
  },
  "area/gimpo/janggi/index.html": {
-  "maxSim": 0.291,
+  "maxSim": 0.286,
   "unique": 3,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/gimpo/gurae/index.html": {
-  "maxSim": 0.267,
+  "maxSim": 0.263,
   "unique": 5,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/gimpo/masan/index.html": {
-  "maxSim": 0.277,
+  "maxSim": 0.278,
   "unique": 7,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/gimpo/unyang/index.html": {
-  "maxSim": 0.291,
+  "maxSim": 0.286,
   "unique": 5,
   "passSim": true,
   "passUnique": false,

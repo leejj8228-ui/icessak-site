@@ -7,14 +7,14 @@
   "pass": true
  },
  "area/incheon/index.html": {
-  "maxSim": 0.158,
+  "maxSim": 0.146,
   "unique": 63,
   "passSim": true,
   "passUnique": true,
   "pass": true
  },
  "area/incheon/jemulpo-gu/index.html": {
-  "maxSim": 0.228,
+  "maxSim": 0.227,
   "unique": 119,
   "passSim": true,
   "passUnique": true,
@@ -22,7 +22,7 @@
  },
  "area/incheon/yeongjong-gu/index.html": {
   "maxSim": 0.202,
-  "unique": 85,
+  "unique": 86,
   "passSim": true,
   "passUnique": true,
   "pass": true
@@ -35,7 +35,7 @@
   "pass": true
  },
  "area/incheon/yeonsu-gu/index.html": {
-  "maxSim": 0.189,
+  "maxSim": 0.198,
   "unique": 88,
   "passSim": true,
   "passUnique": true,
@@ -63,7 +63,7 @@
   "pass": true
  },
  "area/incheon/seohae-gu/index.html": {
-  "maxSim": 0.228,
+  "maxSim": 0.227,
   "unique": 120,
   "passSim": true,
   "passUnique": true,
@@ -78,7 +78,7 @@
  },
  "area/incheon/ganghwa-gun/index.html": {
   "maxSim": 0.153,
-  "unique": 229,
+  "unique": 228,
   "passSim": true,
   "passUnique": true,
   "pass": true
@@ -91,14 +91,14 @@
   "pass": true
  },
  "area/bucheon/index.html": {
-  "maxSim": 0.184,
+  "maxSim": 0.164,
   "unique": 15,
   "passSim": true,
   "passUnique": false,
   "pass": true
  },
  "area/bucheon/wonmi-gu/index.html": {
-  "maxSim": 0.174,
+  "maxSim": 0.173,
   "unique": 124,
   "passSim": true,
   "passUnique": true,
@@ -112,14 +112,14 @@
   "pass": true
  },
  "area/bucheon/ojeong-gu/index.html": {
-  "maxSim": 0.174,
+  "maxSim": 0.173,
   "unique": 182,
   "passSim": true,
   "passUnique": true,
   "pass": true
  },
  "area/gimpo/index.html": {
-  "maxSim": 0.184,
+  "maxSim": 0.164,
   "unique": 53,
   "passSim": true,
   "passUnique": false,
@@ -127,7 +127,7 @@
  },
  "about/index.html": {
   "maxSim": 0.119,
-  "unique": 209,
+  "unique": 202,
   "passSim": true,
   "passUnique": true,
   "pass": true
@@ -140,21 +140,21 @@
   "pass": true
  },
  "price/index.html": {
-  "maxSim": 0.063,
-  "unique": 141,
+  "maxSim": 0.074,
+  "unique": 127,
   "passSim": true,
   "passUnique": true,
   "pass": true
  },
  "process/index.html": {
-  "maxSim": 0.105,
-  "unique": 58,
+  "maxSim": 0.11,
+  "unique": 60,
   "passSim": true,
-  "passUnique": false,
+  "passUnique": true,
   "pass": true
  },
  "faq/index.html": {
-  "maxSim": 0.105,
+  "maxSim": 0.104,
   "unique": 46,
   "passSim": true,
   "passUnique": false,

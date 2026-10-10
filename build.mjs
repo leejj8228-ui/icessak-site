@@ -97,11 +97,11 @@ function pickQA(key, n) {
 
 const TITLE_TAIL = ['분해 세척', '출장 청소', '수조·배관 세척', '방문 분해 청소', '얼음 위생 관리'];
 const LEAD = [
-  (n) => `${n} 어디든 찾아갑니다. 분해 세척 <em>50kg 이하 10만원</em>부터, 약 2시간.`,
+  (n) => `${n} 어디든 찾아갑니다. 분해 세척 <em>테이블형 9만원</em>부터, 약 1시간 30분.`,
   (n) => `${n} 출장합니다. 수조·배관·분배기까지 <em>전부 분해</em>해서 씻습니다.`,
-  (n) => `${n} 제빙기, 전화 한 통이면 <em>견적부터</em> 나옵니다. 50kg 이하 10만원부터.`,
+  (n) => `${n} 제빙기, 전화 한 통이면 <em>견적부터</em> 나옵니다. 테이블형 9만원부터.`,
   (n) => `${n}에서 영업하신다면, 제빙기 안쪽은 <em>6개월이면</em> 눈에 띄게 달라집니다.`,
-  (n) => `${n} 방문 작업. 분해부터 시운전까지 <em>약 2시간</em>, 기록지를 드립니다.`,
+  (n) => `${n} 방문 작업. 분해부터 시운전까지 <em>약 1시간 30분</em>, 기록지를 드립니다.`,
 ];
 
 /* ---------------------------------------------------------------- 공통 틀 */
@@ -226,7 +226,7 @@ const leadShot = ({ kicker, title, pics, extra = '' }) => `
     <h1>${title}</h1>
     <div data-shared>
       <p class="pitch">겉만 닦지 않습니다. <em>수조·급수관·분배관·제빙판·순환 펌프까지</em> 전부 떼어 내 씻습니다.</p>
-      <p class="sub">제빙기만 다룹니다. 분해부터 시운전까지 약 2시간, 50kg 이하 10만원부터.</p>
+      <p class="sub">제빙기만 다룹니다. 분해부터 시운전까지 약 1시간 30분, 테이블형 9만원부터.</p>
     </div>
     ${extra}
     <div class="acts" data-shared>
@@ -245,7 +245,7 @@ const trustRow = () => `
 <section class="lsec" data-shared style="padding:36px 0"><div class="wrap"><div class="trust">
   <div><b>분해 범위</b><p>5개 부위 전부<small>수조·급수관·분배관·제빙판·펌프</small></p></div>
   <div><b>세척 방식</b><p>고온 스팀 + 식품용 세정제<small>헹군 뒤 첫 얼음은 버립니다</small></p></div>
-  <div><b>작업 시간</b><p>약 2시간<small>제빙기만 멈추고 영업은 그대로</small></p></div>
+  <div><b>작업 시간</b><p>약 1시간 30분<small>제빙기만 멈추고 영업은 그대로</small></p></div>
   <div><b>남는 것</b><p>전후 사진과 기록지<small>작업 당일 문자로 전달</small></p></div>
 </div></div></section>`;
 
@@ -295,13 +295,13 @@ const localBusiness = (areaNames) => {
     name: SITE.name,
     telephone: SITE.tel,
     url: SITE.origin,
-    description: `${SITE.name}은 상업용 제빙기를 분해해 수조·급수관·분배관·제빙판·순환 펌프를 고온 스팀과 식품용 세정제로 세척하는 방문 서비스입니다. 인천·김포·부천 출장, 50kg 이하 10만원부터, 작업 약 2시간.`,
+    description: `${SITE.name}은 상업용 제빙기를 분해해 수조·급수관·분배관·제빙판·순환 펌프를 고온 스팀과 식품용 세정제로 세척하는 방문 서비스입니다. 인천·김포·부천 출장, 테이블형 9만원부터, 작업 약 1시간 30분.`,
     knowsAbout: ['제빙기 청소', '제빙기 분해 세척', '카이저 제빙기', '호시자키 제빙기', '아이스트로 제빙기', '매니토웍 제빙기', '얼음 위생'],
     areaServed: areaNames.map((n) => ({ '@type': 'AdministrativeArea', name: n })),
     makesOffer: {
       '@type': 'Offer', priceCurrency: 'KRW',
       itemOffered: { '@type': 'Service', name: '제빙기 분해 청소' },
-      priceSpecification: { '@type': 'PriceSpecification', minPrice: '100000', priceCurrency: 'KRW' },
+      priceSpecification: { '@type': 'PriceSpecification', minPrice: '90000', priceCurrency: 'KRW' },
     },
   };
   if (ID.legalName) o.legalName = ID.legalName;
@@ -397,7 +397,7 @@ function buildCity(c) {
 <section class="lhero"><div class="wrap">
   <p class="kicker">서비스 지역</p>
   <h1>${esc(c.short)} 제빙기 청소</h1>
-  <p class="answer">${esc(c.short)} <em>${n}개 동</em> 출장. 50kg 이하 10만원부터.</p>
+  <p class="answer">${esc(c.short)} <em>${n}개 동</em> 출장. 테이블형 9만원부터.</p>
 </div></section>
 <section class="lsec"><div class="wrap">
   <h2>${esc(gus.length ? '구·군을 고르세요' : '동을 고르세요')}</h2>
@@ -460,14 +460,14 @@ ${callStrip(`${g.name} 제빙기, 전화 한 통이면 견적이 나옵니다`)}
     `<details open><summary>${esc(x.q)}</summary><p>${esc(x.a)}</p></details>`).join('')}</div>
 </div></section>
 <section class="lsec" data-shared><div class="wrap">
-  <p class="price-line">50kg 이하 10만원~ · 100kg 이하 12만원~
+  <p class="price-line">테이블형 9만원 · 스탠드형 10만원~
     <a href="/price/">가격 →</a> <a href="/why/">왜 청소하나 →</a> <a href="/faq/">자주 묻는 질문 →</a></p>
 </div></section>
 ${ctaBand(`${g.name} 견적, 사진 한 장이면 됩니다`)}`;
   page(guUrl(c, g), layout({
     url: guUrl(c, g),
     title: `${g.name} 제빙기 청소 · ${g.dongs.length}개 동 출장 | ${SITE.name}`,
-    desc: `${c.short} ${g.name} 제빙기 분해 청소. ${g.dongs.length}개 동 출장, 50kg 이하 10만원부터. 전후 사진과 기록지를 드립니다.`,
+    desc: `${c.short} ${g.name} 제빙기 분해 청소. ${g.dongs.length}개 동 출장, 테이블형 9만원부터. 전후 사진과 기록지를 드립니다.`,
     crumb, body,
     jsonld: [
       localBusiness([`${c.name} ${g.name}`]),
@@ -520,7 +520,7 @@ function buildDong({ city: c, gu: g, dong: d, grade: gr }) {
     <a class="chip chip--on" href="${guUrl(c, g)}">${esc(g.name ?? c.short)} 전체 →</a></div>
 </div></section>` : '';
   const secLinks = `<section class="lsec" data-shared><div class="wrap">
-  <p class="price-line">50kg 이하 10만원~ · 100kg 이하 12만원~
+  <p class="price-line">테이블형 9만원 · 스탠드형 10만원~
     <a href="/price/">가격 →</a> <a href="/why/">왜 청소하나 →</a> <a href="/faq/">자주 묻는 질문 →</a></p>
 </div></section>`;
 
@@ -538,7 +538,7 @@ ${ctaBand(`${d.name} 견적, 전화 한 통이면 됩니다`)}`;
   page(url, layout({
     url,
     title: `${d.name} 제빙기 청소 · ${TITLE_TAIL[Math.floor(seedOf(key + 't')() * TITLE_TAIL.length)]} | ${SITE.name}`,
-    desc: `${d.name} 제빙기 분해 청소는 50kg 이하 10만원부터, 작업 약 2시간입니다. `
+    desc: `${d.name} 제빙기 분해 청소는 테이블형 9만원부터, 작업 약 1시간 30분입니다. `
       + `${c.short} ${g.name ?? ''} ${d.name} 출장. 수조·배관·분배기까지 분해해 고온 스팀으로 세척하고 기록지를 드립니다.`.replace(/\s+/g, ' '),
     crumb, body,
     jsonld: [
@@ -547,9 +547,9 @@ ${ctaBand(`${d.name} 견적, 전화 한 통이면 됩니다`)}`;
         serviceType: '제빙기 분해 청소',
         provider: { '@type': 'LocalBusiness', name: SITE.name, telephone: SITE.tel, url: SITE.origin },
         areaServed: { '@type': 'AdministrativeArea', name: `${c.name} ${g.name ?? ''} ${d.name}`.replace(/\s+/g, ' ').trim() },
-        offers: { '@type': 'Offer', priceCurrency: 'KRW', price: '100000',
-          priceSpecification: { '@type': 'PriceSpecification', minPrice: '100000', priceCurrency: 'KRW',
-            description: '일 생산량 50kg 이하 기준 최저가. 기종·용량·오염 정도에 따라 달라집니다.' } },
+        offers: { '@type': 'Offer', priceCurrency: 'KRW', price: '90000',
+          priceSpecification: { '@type': 'PriceSpecification', minPrice: '90000', priceCurrency: 'KRW',
+            description: '테이블형 기준 최저가. 제빙기 형태·기종·설치 위치·오염 정도에 따라 달라집니다.' } },
         availableChannel: { '@type': 'ServiceChannel', servicePhone: { '@type': 'ContactPoint', telephone: SITE.tel } } },
       faqPage(qa),
       breadcrumb(crumb.map((x, i) => ({ name: x.name, url: x.url ?? (i === crumb.length - 1 ? url : '') }))),
@@ -566,7 +566,7 @@ function buildCommon() {
   const cr = ID.credentials ?? {};
   page('/about/', layout({
     url: '/about/', title: `얼음싹싹 소개 — 제빙기 청소 전문 | ${SITE.name}`,
-    desc: '얼음싹싹은 인천·김포·부천에서 상업용 제빙기를 분해 청소하는 방문 서비스입니다. 50kg 이하 10만원부터, 작업 약 2시간, 전후 사진과 기록지를 드립니다.',
+    desc: '얼음싹싹은 인천·김포·부천에서 상업용 제빙기를 분해 청소하는 방문 서비스입니다. 테이블형 9만원부터, 작업 약 1시간 30분, 전후 사진과 기록지를 드립니다.',
     crumb: [...c0, { name: '업체 소개' }],
     body: `
 <section class="lhero"><div class="wrap">
@@ -575,7 +575,7 @@ function buildCommon() {
 </div></section>
 ${answerBox('얼음싹싹 한눈에 보기',
   '얼음싹싹은 인천광역시·부천시·김포시에서 상업용 제빙기 분해 청소를 하는 방문 서비스입니다. '
-  + '카이저·호시자키·아이스트로·매니토웍을 작업하며, 일 생산량 50kg 이하 기준 10만원부터, 작업 시간은 약 2시간입니다. '
+  + '카이저·호시자키·아이스트로·매니토웍을 작업하며, 테이블형 9만원·스탠드형 10만원부터, 작업 시간은 약 1시간 30분입니다. '
   + `작업 중에는 제빙기만 멈추고 영업은 계속할 수 있습니다. 문의는 전화 ${SITE.tel}.`)}
 <section class="lsec"><div class="wrap">
   <h2>무엇을 하나요?</h2>
@@ -645,12 +645,12 @@ ${ctaBand('우리 가게 제빙기는 어떤 상태일까요?')}`,
 
   page('/price/', layout({
     url: '/price/', title: `가격 — 제빙기 청소 비용 | ${SITE.name}`,
-    desc: '제빙기 분해 청소 비용. 50kg 이하 10만원부터, 용량과 기종으로 정해집니다. 대형·모듈형은 전화 견적.',
+    desc: '제빙기 분해 청소 비용. 테이블형 9만원, 스탠드형 10만원부터. 제빙기 형태와 기종으로 정해집니다. 대형·모듈형은 전화 견적.',
     crumb: [...c0, { name: '가격' }],
     body: `
 <section class="lhero"><div class="wrap">
   <h1>제빙기 청소 비용은?</h1>
-  <p class="answer"><em>50kg 이하 10만원</em>부터입니다. 용량과 기종으로 정해집니다.</p>
+  <p class="answer"><em>테이블형 9만원</em>부터입니다. 제빙기 형태와 기종으로 정해집니다.</p>
   ${SITE.price.note ? `<p class="legacy">${esc(SITE.price.note)}</p>` : ''}
 </div></section>
 <section class="lsec"><div class="wrap">${priceTable()}
@@ -669,12 +669,12 @@ ${ctaBand('우리 제빙기는 얼마일까요?')}`,
 
   page('/process/', layout({
     url: '/process/', title: `작업 과정 — 분해부터 시운전까지 5단계 | ${SITE.name}`,
-    desc: '제빙기 분해 청소 5단계: 분해 → 물때 제거 → 고온 스팀 → 살균·헹굼 → 조립·시운전. 약 2시간, 기록지를 드립니다.',
+    desc: '제빙기 분해 청소 5단계: 분해 → 물때 제거 → 고온 스팀 → 살균·헹굼 → 조립·시운전. 약 1시간 30분, 기록지를 드립니다.',
     crumb: [...c0, { name: '작업 과정' }],
     body: `
 <section class="lhero"><div class="wrap">
   <h1>어떻게 청소하나요?</h1>
-  <p class="answer">분해부터 시운전까지 <em>5단계</em>, 약 2시간 걸립니다.</p>
+  <p class="answer">분해부터 시운전까지 <em>5단계</em>, 약 1시간 30분 걸립니다.</p>
 </div></section>
 <section class="lsec"><div class="wrap">
   ${SITE.process.map(([n, t], i) => `<div class="case"><div class="case__body">
@@ -684,8 +684,8 @@ ${ctaBand('작업 일정 잡아 드립니다')}`,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'HowTo',
         name: '제빙기 분해 청소 과정',
-        totalTime: 'PT2H',
-        estimatedCost: { '@type': 'MonetaryAmount', currency: 'KRW', value: '100000' },
+        totalTime: 'PT1H30M',
+        estimatedCost: { '@type': 'MonetaryAmount', currency: 'KRW', value: '90000' },
         step: SITE.process.map(([n, t], i) => ({
           '@type': 'HowToStep', position: i + 1, name: n, text: t })) },
       breadcrumb([{ name: '홈', url: '/' }, { name: '작업 과정', url: '/process/' }])],
@@ -776,9 +776,9 @@ ${SITE.name}은 상업용 제빙기를 분해해 수조·급수관·분배관·�
 - 상호: ${SITE.name}
 - 전화: ${SITE.tel}
 - 서비스 지역: 인천광역시 전역, 경기도 부천시, 경기도 김포시
-- 비용: 일 생산량 50kg 이하 10만원부터, 100kg 이하 12만원부터. 호시자키는 2만원 높음.
+- 비용: 테이블형 9만원(카이저·아이스트로·호시자키 동일), 스탠드형 10만원(호시자키 16만원).
   대형·모듈형은 전화 견적. 3개월·6개월 정기 계약은 매회 할인.
-- 작업 시간: 약 2시간. 작업 중 제빙기만 정지하고 영업은 계속 가능.
+- 작업 시간: 약 1시간 30분. 작업 중 제빙기만 정지하고 영업은 계속 가능.
 - 작업 가능 기종: 카이저(IMK), 호시자키(IM-NE), 아이스트로(ICI·JETICE·IM·ID), 매니토웍(NEO·Indigo NXT)
 - 작업 순서: 분해 → 물때 제거 → 고온 스팀 → 살균·헹굼 → 조립·시운전
 - 권장 주기: 매일 쓰는 영업장 3개월, 일반 6개월
@@ -877,7 +877,7 @@ function wireMainPage() {
   h = h.replace('</head>', `${verifyTags()}\n<link rel="canonical" href="${SITE.origin}/">
 <link rel="stylesheet" href="/assets/region.css">
 <meta property="og:title" content="${esc(SITE.name)}">
-<meta property="og:description" content="인천·김포·부천 제빙기 분해 청소. 50kg 이하 10만원부터, 약 2시간. 전화 ${esc(SITE.tel)}">
+<meta property="og:description" content="인천·김포·부천 제빙기 분해 청소. 테이블형 9만원부터, 약 1시간 30분. 전화 ${esc(SITE.tel)}">
 <meta property="og:url" content="${SITE.origin}/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(SITE.name)}">
