@@ -765,11 +765,11 @@ Sitemap: ${SITE.origin}/sitemap.xml
 
   const hub = pages.filter((p) => p.index && p.kind === 'hub');
   const dong = pages.filter((p) => p.index && p.kind === 'dong');
-  /* Cloudflare 가 HTML 인 줄 알고 스크립트를 끼워 넣지 않도록 형식을 못 박는다.
-   * sitemap.xml 에 <script> 가 섞이면 검색엔진이 사이트맵을 거부할 수 있다. */
+  /* 파일 형식을 분명히 해 둔다.
+   * 사이트맵에는 X-Robots-Tag: noindex 를 절대 붙이지 말 것 —
+   * 구글이 "사이트맵을 읽을 수 없음" 으로 처리를 거부한다. */
   write('_headers', `/sitemap.xml
   Content-Type: application/xml; charset=utf-8
-  X-Robots-Tag: noindex
 
 /robots.txt
   Content-Type: text/plain; charset=utf-8
