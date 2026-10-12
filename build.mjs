@@ -765,6 +765,19 @@ Sitemap: ${SITE.origin}/sitemap.xml
 
   const hub = pages.filter((p) => p.index && p.kind === 'hub');
   const dong = pages.filter((p) => p.index && p.kind === 'dong');
+  /* Cloudflare 가 HTML 인 줄 알고 스크립트를 끼워 넣지 않도록 형식을 못 박는다.
+   * sitemap.xml 에 <script> 가 섞이면 검색엔진이 사이트맵을 거부할 수 있다. */
+  write('_headers', `/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  X-Robots-Tag: noindex
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+`);
+
   write('llms.txt', `# ${SITE.name}
 
 > ${SITE.tagline} 전문 업체. 인천·김포·부천 방문 작업. 전화 ${SITE.tel}.
