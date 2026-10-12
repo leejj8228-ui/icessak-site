@@ -113,6 +113,8 @@
     "allow": [
       "Yeti",
       "Googlebot",
+      "Daum",
+      "Daumoa",
       "Bingbot",
       "OAI-SearchBot",
       "ChatGPT-User",
@@ -153,6 +155,7 @@
     "_설명": "검색엔진 소유 확인 코드. 각 사이트에서 받은 값을 여기 넣으면 모든 페이지 머리말에 들어갑니다.",
     "google": null,
     "naver": null,
-    "bing": null
+    "bing": null,
+    "daum": null
   }
 }

@@ -111,6 +111,7 @@ const verifyTags = () => [
   VERIFY.google && `<meta name="google-site-verification" content="${esc(VERIFY.google)}">`,
   VERIFY.naver && `<meta name="naver-site-verification" content="${esc(VERIFY.naver)}">`,
   VERIFY.bing && `<meta name="msvalidate.01" content="${esc(VERIFY.bing)}">`,
+  VERIFY.daum && `<meta name="daum-site-verification" content="${esc(VERIFY.daum)}">`,
 ].filter(Boolean).join('\n');
 
 const TEL_HREF = `tel:${SITE.tel}`;
