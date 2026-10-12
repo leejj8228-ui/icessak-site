@@ -872,6 +872,8 @@ function wireMainPage() {
 </section>
 `;
   h = h.replace('<!-- 상담 신청 + 견적 폼 -->', section + '<!-- 상담 신청 -->');
+  // 메인은 생성이 아니라 복사라서 목록에 없다. 사이트맵에 들어가도록 직접 넣는다.
+  pages.push({ url: '/', index: true, kind: 'main', canonicalTo: null });
   // 떠 있는 전화 버튼과 겹치므로 옛 하단 고정 바는 뺀다
   h = h.replace(/<nav class="dock"[\s\S]*?<\/nav>/, '');
   h = h.replace('<script src="main.js">', callFab() + '\n<script src="main.js">');
