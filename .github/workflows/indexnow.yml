@@ -1,0 +1,72 @@
+# 새 내용을 올리면 빙·네이버에 "여기 바뀌었다"고 바로 알립니다 (IndexNow).
+#
+# 보통 며칠 걸리는 수집이 몇 시간으로 줄어듭니다. 비밀번호나 토큰이 필요 없습니다 —
+# 사이트에 둔 키 파일(<키>.txt)이 소유 증명 역할을 합니다.
+# 사람이 할 일은 없고, main 에 올라가면 알아서 돕니다.
+
+name: 검색엔진에 알리기 (IndexNow)
+
+on:
+  push:
+    branches: [main]
+    paths:                      # 글·데이터가 바뀐 경우에만
+      - 'src/**'
+      - 'data/**'
+      - 'build.mjs'
+  workflow_dispatch:            # 손으로도 돌릴 수 있게
+
+concurrency:                    # 연달아 올려도 마지막 것만
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+
+      - name: 사이트 만들기 (주소 목록을 얻기 위해)
+        run: node build.mjs
+
+      - name: Cloudflare 배포가 끝나기를 기다림
+        run: sleep 180
+
+      - name: 빙·네이버에 알리기
+        run: |
+          KEY=$(node -e "console.log(require('./data/site.json').indexNowKey)")
+          HOST=$(node -e "console.log(new URL(require('./data/site.json').origin).host)")
+          if [ -z "$KEY" ] || [ "$KEY" = "null" ]; then
+            echo "IndexNow 키가 없습니다. data/site.json 의 indexNowKey 를 채우세요."; exit 1
+          fi
+
+          # 키 파일이 실제로 사이트에 올라가 있는지 먼저 확인 (없으면 알림이 거부됨)
+          if ! curl -sf "https://$HOST/$KEY.txt" | grep -qx "$KEY"; then
+            echo "키 파일을 사이트에서 찾을 수 없습니다: https://$HOST/$KEY.txt"
+            echo "배포가 아직 안 끝났을 수 있습니다. 잠시 뒤 다시 돌려 주세요."; exit 1
+          fi
+
+          node -e "
+            const fs = require('fs');
+            const xml = fs.readFileSync('dist/sitemap.xml', 'utf8');
+            const urlList = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+            const s = require('./data/site.json');
+            fs.writeFileSync('payload.json', JSON.stringify({
+              host: new URL(s.origin).host,
+              key: s.indexNowKey,
+              keyLocation: s.origin + '/' + s.indexNowKey + '.txt',
+              urlList,
+            }));
+            console.log('알릴 주소', urlList.length, '개');
+          "
+
+          CODE=$(curl -sS -o resp.txt -w '%{http_code}' \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @payload.json)
+          echo "응답 코드 $CODE"; cat resp.txt; echo
+          # 200·202 는 접수됨. 그 외는 실패로 본다.
+          case "$CODE" in 200|202) echo "접수되었습니다." ;; *) exit 1 ;; esac

@@ -778,6 +778,9 @@ Sitemap: ${SITE.origin}/sitemap.xml
   Content-Type: text/plain; charset=utf-8
 `);
 
+  /* IndexNow 키 파일 — 이 파일이 사이트에 있어야 '내 사이트가 맞다'는 증명이 된다 */
+  if (SITE.indexNowKey) write(`${SITE.indexNowKey}.txt`, SITE.indexNowKey);
+
   write('llms.txt', `# ${SITE.name}
 
 > ${SITE.tagline} 전문 업체. 인천·김포·부천 방문 작업. 전화 ${SITE.tel}.
