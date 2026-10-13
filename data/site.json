@@ -156,7 +156,8 @@
     "google": "Y-aR9X8jUsyQk-LlPFY7LRrS_EthYtAJgc6oMUTElhU",
     "naver": "8f0931289133826683170b3a36192bd98b99ab09",
     "bing": null,
-    "daum": null
+    "daum": null,
+    "daumPin": "#DaumWebMasterTool:e0ca0492e5931db34593ad6139b954f89a1994dad19d6417e9aa19bbad5a12a2:UjR58tlt8ZMRZi79BVamzQ=="
   },
   "_indexNow": "새 페이지를 빙·네이버에 즉시 알리는 규약. 키 파일(<키>.txt)을 사이트에 두는 것으로 소유를 증명하므로 비밀번호나 토큰이 필요 없습니다. 깃에 올리면 .github/workflows/indexnow.yml 이 자동으로 알립니다."
 }

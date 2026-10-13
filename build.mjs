@@ -750,7 +750,8 @@ ${urls.map((p) => `  <url><loc>${SITE.origin}${p.url}</loc><lastmod>${TODAY}</la
 `);
 
   const r = SITE.robots;
-  write('robots.txt', `# ${SITE.name} — ${SITE.tagline}
+  /* 다음 웹마스터도구는 메타 태그가 아니라 robots.txt 안의 PIN 줄로 소유를 확인한다 */
+  write('robots.txt', `${VERIFY.daumPin ? `${VERIFY.daumPin}\n` : ''}# ${SITE.name} — ${SITE.tagline}
 # 검색 로봇과 AI 검색 로봇을 모두 받습니다.
 
 User-agent: *
